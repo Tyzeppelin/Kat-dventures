@@ -1,6 +1,15 @@
 using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public class InfoMembre {
+	public Transform membre;
+	public Vector3 anglesEuler;
+	public Vector3 anglesEulerMin;
+	public Vector3 anglesEulerMax;
+}
+
+[System.Serializable]
 public class CCD3d : MonoBehaviour {
 	#region script_parameters	
 	// the target we want the end-effector to reach
@@ -8,6 +17,15 @@ public class CCD3d : MonoBehaviour {
 	public Transform target;
 	public Transform armStart;
 	public Transform displayEuler;
+	/*public Transform membre1;
+	public Vector3 angles1;
+	public Transform membre2;
+	public Vector3 angles2;
+	public Transform membre3;
+	public Vector3 angles3;
+	public Transform membre4;
+	public Vector3 angles4;*/
+	public InfoMembre[] tabMembre;
 	#endregion script_parameters
 		
 	// Use this for initialization
@@ -18,7 +36,7 @@ public class CCD3d : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// in each frame we make one iteration
-		CCDStep3D(gameObject.transform.parent, gameObject.transform, target);
+		CCDStep3D(gameObject.transform, gameObject.transform, target);
 	}
 	
 	/// \brief method for computing an angle value between two 3d vectors using
@@ -48,13 +66,31 @@ public class CCD3d : MonoBehaviour {
 		Vector3 axe = Vector3.Cross (qipe, qipt);
 		joint.Rotate (axe, alpha, Space.World);
 
+
+
 		if(joint.parent != null && joint != armStart)
 		{
 			CCDStep3D(joint.parent, effector, target);
 		}
 
 
-			print(joint.name+" : "+transform.localEulerAngles);
+		print(joint.name+" : "+joint.localEulerAngles);
+		for (int i = 0; i<tabMembre.Length; i++) {
+			if (tabMembre[i].membre == joint) {
+				tabMembre[i].anglesEuler = joint.localEulerAngles;
+			}
+				}
+		//Verification des angles d'euler pour chaque membre
+		verifAngles(joint);
+	}
+
+	/// \brief allows to check if angles are ok according to values setted up in Inspector
+	/// In the case that the angles are not correct, their values are imposed 
+	/// \param joint the joint for which angles have to be checked
+	private void verifAngles (Transform joint) {
+		//Looking for the referenced joint 
 
 	}
+	 
+
 }
