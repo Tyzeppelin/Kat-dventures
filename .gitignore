@@ -9,8 +9,10 @@
 /Library/metadata
 /Library/previews/
 /Library/ScriptAssemblies
+/Library
 /obj
 /Temp
+*.meta
 
 Library/metadata/02/020000d382f4d4fec870f63b0622b80d
 
