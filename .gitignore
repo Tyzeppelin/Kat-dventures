@@ -1,17 +1,12 @@
-*.sln
-*.userprefs
-*.csproj
+#.gitignore file
+Temp/*
+Library/*
+Build/*
+
+#Un-ignore these specific files
+
+#ignoring pidb, they are just code completion caching data according to:
+# http://stackoverflow.com/questions/1...ops-pidb-files
 *.pidb
-*.unityproj
-.DS_Store
-/Library/FailedAssetImports.txt
-/Library/cache/
-/Library/metadata
-/Library/previews/
-/Library/ScriptAssemblies
-/obj
-/Temp
-
-Library/metadata/02/020000d382f4d4fec870f63b0622b80d
-
-Library/metadata/e0/e0cf203bfaba59e469065bb0efb5fdf1
+*.userprefs
+*.meta
