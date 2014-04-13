@@ -2,6 +2,20 @@
 Temp/*
 Library/*
 Build/*
+*.sln
+*.userprefs
+*.csproj
+*.pidb
+*.unityproj
+*.meta
+.DS_Store
+/Library/FailedAssetImports.txt
+/Library/cache/
+/Library/metadata
+/Library/previews/
+/Library/ScriptAssemblies
+/obj
+/Temp
 
 #Un-ignore these specific files
 
