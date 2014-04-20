@@ -5,20 +5,21 @@ public class StandUp : MonoBehaviour {
 	#region script_parameters	
 	// the target we want the end-effector to reach
 	// In our case the cube
-	public Transform armStart;
+	public Transform start;
 	#endregion script_parameters
-	
+	//Tete du nouveau squelette
+	public Transform[] i = new Transform[5];
+	private int a = 1;
 	// Use this for initialization
 	void Start () {
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		CCDStep3D(gameObject.transform.parent, gameObject.transform);
-
+		CCDStep3D(i[1], i[0]);
 	}
-	
+
 	/// \brief method for computing an angle value between two 3d vectors using
 	/// their dot product.
 	/// \return the value of the angle existing between a and b.
@@ -40,15 +41,19 @@ public class StandUp : MonoBehaviour {
 	/// \param target the transform containing the position we want the end-effector to reach.
 	private void CCDStep3D(Transform joint, Transform effector)
 	{
-		Vector3 qipe = new Vector3 (effector.position.x - joint.position.x, effector.position.y - joint.position.y, effector.position.z - joint.position.z);
-		Vector3 qipt = new Vector3 (armStart.position.x - joint.position.x, armStart.position.y + 500 - joint.position.y, armStart.position.z - joint.position.z);
-		float alpha = ComputeAngle3D (qipe, qipt);
-		Vector3 axe = Vector3.Cross (qipe, qipt);
-		joint.Rotate (axe, alpha, Space.World);
-		
-		if(joint.parent != null && joint != armStart)
+		if (a < 5) 
 		{
-			CCDStep3D(joint.parent, effector);
+			//Transform joint = maillonJoint.transform;
+			Vector3 qipe = new Vector3 (effector.position.x - joint.position.x, effector.position.y - joint.position.y, effector.position.z - joint.position.z);
+			Vector3 qipt = new Vector3 (start.position.x - joint.position.x, start.position.y + 500 - joint.position.y, start.position.z + 200 - joint.position.z);
+			float alpha = ComputeAngle3D (qipe, qipt);
+			Vector3 axe = Vector3.Cross (qipe, qipt);
+			joint.Rotate (axe, alpha, Space.World);
+
+			//if (maillonJoint.pere != null && !joint.Equals (start)) {
+			a = a + 1;
+					CCDStep3D (i[a], effector);
+			//}
 		}
 	}
 }
