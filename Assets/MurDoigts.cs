@@ -14,7 +14,8 @@ public class MurDoigts : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		priseEnCours = PriseDeDebut;
-
+		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
+		//test.target=PriseDeDebut;
 	}
 	
 	// Update is called once per frame
@@ -22,19 +23,25 @@ public class MurDoigts : MonoBehaviour {
 
 		//Vérification de la distance 
 		if (Vector3.Distance (transform.position, priseEnCours.position) > epsilon) {
-			Transform priseProche = priseEnCours;
-			//Recherche de la prise la plus proche 
-			for (int i =0;i<TableauDePrises.Length;i++) {
-				if (Vector3.Distance(transform.position,TableauDePrises[i].position) <  Vector3.Distance(transform.position,priseProche.position)) 
-				    priseProche = TableauDePrises[i];
-			}
-			priseEnCours=priseProche;
+			priseEnCours=getPrise ();
 		}
 
 	    //Ensuite, il faut changer la target pour le script CCD
 		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
 	    test.target=priseEnCours;
 	}
-
-	//TODO : méthode getPrise
+	
+	/// <summary>
+	/// Method to get the best target to reach ; Steve's method
+	/// </summary>
+	/// <returns>The prise.</returns>
+	Transform getPrise() {
+		Transform priseProche = priseEnCours; // TODO a revoir 
+		//Recherche de la prise la plus proche 
+		for (int i =0;i<TableauDePrises.Length;i++) {
+			if (Vector3.Distance(transform.position,TableauDePrises[i].position) <  Vector3.Distance(transform.position,priseProche.position)) 
+				priseProche = TableauDePrises[i];
+		}
+		return priseProche;
+	}
 }
