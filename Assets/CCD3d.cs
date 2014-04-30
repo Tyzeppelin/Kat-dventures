@@ -77,12 +77,12 @@ public class CCD3d : MonoBehaviour {
 		//Verification des angles d'euler pour chaque membre
 		verifAngles(joint);
 
-		print(joint.name+" : "+joint.localEulerAngles);
+		/*print(joint.name+" : "+joint.localEulerAngles);
 		for (int i = 0; i<tabMembre.Length; i++) {
 			if (tabMembre[i].membre == joint) {
 				tabMembre[i].anglesEuler = joint.localEulerAngles;
 			}
-				}
+				}*/
 	}
 
 	/// \brief allows to check if angles are ok according to values setted up in Inspector
@@ -92,6 +92,7 @@ public class CCD3d : MonoBehaviour {
 		//Looking for the referenced joint 
 		for (int i =tabMembre.Length -1; i>0; --i) {
 			if (joint == tabMembre[i].membre) {
+
 				//Check the maximum limit
 				Vector3 tmp = joint.localEulerAngles;
 				if (joint.localEulerAngles.x > tabMembre[i].anglesEulerMax.x) 
@@ -99,7 +100,7 @@ public class CCD3d : MonoBehaviour {
 					//Debug.Log( joint.localEulerAngles.x);
 
 					tmp.x =tabMembre[i].anglesEulerMax.x;
-					Debug.Log( joint.localEulerAngles.x);
+					//Debug.Log( joint.localEulerAngles.x);
 				}
 				if (joint.localEulerAngles.y > tabMembre[i].anglesEulerMax.y)
 				{
