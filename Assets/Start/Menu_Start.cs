@@ -14,7 +14,7 @@ public class Menu_Start : MonoBehaviour {
 
 	private GUIText menu;
 
-	private Resolution screenRes;
+	private int screenRes;
 
 	void OnMouseEnter() {
 		this.guiText.fontSize = s_size_active;
@@ -32,14 +32,19 @@ public class Menu_Start : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.guiText.fontSize = s_size_idle;
-		screenRes = Screen.currentResolution;
-		Vector3 pos = new Vector3(Mathf.Atan(screenRes.width)/(2*Mathf.PI),Mathf.Atan(screenRes.height)/(2*Mathf.PI),0);
-		this.transform.position = pos;
+		screenRes = Screen.width;
+		//Vector3 pos = new Vector3(Mathf.Atan(screenRes)/(2*Mathf.PI),Mathf.Atan(screenRes)/(2*Mathf.PI),0);
+		this.transform.position = new Vector3(Mathf.Atan(screenRes)/(2*Mathf.PI),(float)0.20,0);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (screenRes!= Screen.width) {
+			this.guiText.fontSize = s_size_idle;
+		    screenRes = Screen.width; //Vector3 pos = new Vector3(Mathf.Atan(screenRes)/(2*Mathf.PI),Mathf.Atan(screenRes)/(2*Mathf.PI),0);
+		    this.transform.position = new Vector3(Mathf.Atan(screenRes)/(2*Mathf.PI),(float)0.25,0);
+
+		}
 	}
 }
