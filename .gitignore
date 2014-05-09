@@ -1,24 +1,40 @@
+#.gitignore file
+Temp/*
+Library/*
+Build/*
 *.sln
 *.userprefs
 *.csproj
 *.pidb
 *.unityproj
+*.meta
 .DS_Store
 /Library/FailedAssetImports.txt
 /Library/cache/
+<<<<<<< HEAD
 <<<<<<< HEAD
 /Library/previews/
 /Library/ScriptAssemblies
 /obj
 /Temp
 =======
+=======
+>>>>>>> 9e31fa11c2f1bdd648a99d4f85f925432cc0d8f4
 /Library/metadata
 /Library/previews/
 /Library/ScriptAssemblies
 /obj
 /Temp
 
-Library/metadata/02/020000d382f4d4fec870f63b0622b80d
+#Un-ignore these specific files
 
+<<<<<<< HEAD
 Library/metadata/e0/e0cf203bfaba59e469065bb0efb5fdf1
 >>>>>>> pousseCaisse
+=======
+#ignoring pidb, they are just code completion caching data according to:
+# http://stackoverflow.com/questions/1...ops-pidb-files
+*.pidb
+*.userprefs
+*.meta
+>>>>>>> 9e31fa11c2f1bdd648a99d4f85f925432cc0d8f4
