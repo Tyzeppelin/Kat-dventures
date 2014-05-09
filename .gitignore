@@ -6,7 +6,19 @@
 .DS_Store
 /Library/FailedAssetImports.txt
 /Library/cache/
+<<<<<<< HEAD
 /Library/previews/
 /Library/ScriptAssemblies
 /obj
 /Temp
+=======
+/Library/metadata
+/Library/previews/
+/Library/ScriptAssemblies
+/obj
+/Temp
+
+Library/metadata/02/020000d382f4d4fec870f63b0622b80d
+
+Library/metadata/e0/e0cf203bfaba59e469065bb0efb5fdf1
+>>>>>>> pousseCaisse
