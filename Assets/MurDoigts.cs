@@ -15,7 +15,7 @@ public class MurDoigts : MonoBehaviour {
 	void Start () {
 		priseEnCours = PriseDeDebut;
 		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
-		//test.target=PriseDeDebut;
+		test.target=PriseDeDebut;
 	}
 	
 	// Update is called once per frame
@@ -30,11 +30,10 @@ public class MurDoigts : MonoBehaviour {
 		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
 	    test.target=priseEnCours;
 	}
-	
-	/// <summary>
-	/// Method to get the best target to reach ; Steve's method
-	/// </summary>
-	/// <returns>The prise.</returns>
+
+	/// \brief Method to get the best target to reach ; Steve's method
+	///
+	/// \return The prise
 	Transform getPrise() {
 		Transform priseProche = priseEnCours; // TODO a revoir 
 		//Recherche de la prise la plus proche 
