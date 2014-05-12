@@ -17,7 +17,7 @@ public class BoxMove : MonoBehaviour {
 		Vector3 v2 = patteGauche.position - gameObject.transform.position;
 		if (v.sqrMagnitude < e || v2.sqrMagnitude < e) 
 		{
-			gameObject.transform.rigidbody.AddForce(GameObject.Find("cat").transform.forward / 5);
+			gameObject.transform.rigidbody.AddForce(GameObject.Find("cat").transform.forward / 6);
 		}
 	}
 }
