@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CatManipulability{
+public class CatManipulability : MonoBehaviour{
 	private const float epsilon = 0.001f;
 	private Transform from_;
 	private Transform effector_;
