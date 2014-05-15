@@ -8,7 +8,7 @@ public class MurDoigts : MonoBehaviour {
 	public Transform PriseDeDebut;
 	public int epsilonDoigtPrise; //Correspond à la distance limite entre les doigts et la prise
 	public int epsilonEpaulePrise; //Correspond à la distance minimale entre l'épaule et la prise (TECCC)
-	public Vector3 direction; //Direction voulue par le joueur
+	public Vector3 directionDNT; //Direction voulue par le joueur
 
 	Transform priseEnCours;
 
@@ -70,7 +70,7 @@ public class MurDoigts : MonoBehaviour {
 
 			//3b : 
 			CatManipulability script = (CatManipulability) transform.GetComponent("CatManipulability");
-			float currentFTR=script.ftr(direction); 
+			float currentFTR=script.ftr(directionDNT); 
 			if (currentFTR > bestFTR) 
 			{
 				bestFTR=currentFTR;

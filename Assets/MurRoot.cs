@@ -62,7 +62,7 @@ public class MurRoot : MonoBehaviour {
 	private void passageDir(Vector3 dir) {
 		for (int i=0; i<tabDoigts.Length; i++) {
 			MurDoigts compon = (MurDoigts) (tabDoigts[i].GetComponent("MurDoigts"));
-			compon.direction=dir;
+			compon.directionDNT=dir;
 				}
 				
 	}
