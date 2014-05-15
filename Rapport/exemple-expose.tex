@@ -53,9 +53,17 @@ Parmi les pistes proposées pour résoudre cette problématique, l'animation procéd
 
 
 \section{Animation procédurale}  
-\subsection{Cinématique inverse}
-Parmi les techniques d'animation, l'animation procédurale a la capacité intéressante d'adapter le mouvement au milieu où l'action se déroule. En effet, elle consiste en la création du mouvement par l'ordinateur en fonction de l'environnement. Ce mouvement sera issu d'algorithmes mathématiques. Les moyens de mettre en place pratiquement l'animation procédurale s'appellent les méthodes procédurales.
+%Parmi les techniques d'animation, celles d'animation procédurale a la capacité intéressante d'adapter le mouvement au milieu où l'action se déroule. En effet, elle consiste en la création du mouvement par l'ordinateur en fonction de l'environnement. 
+Parmi les techniques d'animation nous retrouvons deux méthodes principales pour créer les mouvements : 
+\begin{itemize}
+	\item L'animation procédurale que nous allons développer plus bas.
+	\item La \textit{Motion Capture}, qui consiste en la création du mouvement par des cascadeurs munis de capteurs. 
+\end{itemize}
+Mais pourquoi utiliser des techniques d'animation procédurale, plutôt que la \textit{Motion Capture} ? En réalité, la \textit{Motion Capture}, même si elle permet d'obtenir des mouvements réalistes, car obtenus directement depuis l'homme, pose le problème de la réutilisation des mouvements. En effet, un mouvement issu de \textit{Motion Capture} est contextuel à un environnement spécifique, et ne peut donc pas être transposé à un autre environnement.
 
+Dans notre cas, nous allons travailler sur les techniques d'animation procédurale. Ce mouvement sera issu d'algorithmes mathématiques, et devra également respecter les contraintes inspirées du monde réel (gravité, limites articulaires ou encore confort de la position). Les moyens de mettre en place pratiquement l'animation procédurale s'appellent les méthodes procédurales.
+
+\subsection{Cinématique inverse}
 Les méthodes procédurales sont regroupées en plusieurs familles. Nous nous sommes intéressés à l'une d'elles, la cinématique inverse. Le but de cette méthode est simple : une extrémité de membre doit être le plus près possible d'une cible fixée. Le déplacement de l'extrémité du membre va entraîner un déplacement des autres membres reliés avec elle, jusqu'à obtenir une position pour chaque membre.
 
 <image powerpoint avec bonhomme>
@@ -67,12 +75,12 @@ Pour obtenir ces positions, différents algorithmes mathématiques sont disponible
 
 
 \subsection{Gestion des contraintes articulaires}
-Cependant, contrairement à d'autres algorithmes de cinématique inverse comme FABRIK, CCD ne gère pas les contraintes articulaires. Il s'agit de prendre en compte les butées articulaires naturelles du squelette du personnage. L'enjeu est d'éviter les positions aberrantes du personnage, rendant impossible le mouvement. Ainsi, nous avons dû gérer les contraintes articulaires manuellement, en parallèle de l'algorithme CCD.
+Cependant, contrairement à d'autres algorithmes de cinématique inverse comme FABRIK, CCD ne gère pas les contraintes articulaires. Il s'agit de prendre en compte les butées articulaires naturelles du squelette du personnage, afin de générer des mouvements contraires aux conditions du monde réel. L'enjeu est d'éviter les positions aberrantes du personnage, rendant impossible le mouvement. Ainsi, nous avons dû gérer les contraintes articulaires manuellement, en parallèle de l'algorithme CCD.
 
 \subsection{Choix des cibles}
 Nous avons vu que la cinématique inverse a besoin de cibles sur lesquelles doivent pointer les extrémités des membres. Là encore une problématique se dessine : comment choisir la meilleure cible possible en fonction de l'environnement, mais également du personnage, afin d'obtenir un mouvement réaliste ?
 
-Afin de remédier à cela, nous avons utilisé la méthode développée par notre encadrant Steve Tonneau, nommée <<Task Efficient Computation of Contact Configurations >> (TECCC). Cette méthode analyse le mouvement global voulu par l'utilisateur (monter, descendre, avancer,...) et adapte alors le point cible en fonction de ce qui entoure le personnage. 
+Afin de remédier à cela, nous avons utilisé la méthode introduite dans le papier \textit{Task Efficient Computation of Contact Configurations}  (TECCC) \cite{tonneau:latex:14}. Cette méthode analyse le mouvement global voulu par l'utilisateur (monter, descendre, avancer,...) et adapte alors le point cible en fonction de ce qui entoure le personnage. 
 
 
 \section{Gameplay}
@@ -86,11 +94,11 @@ C'est alors que le mode super pouvoir devient nécessaire. Il peut être déclenché
 \paragraph{Pousser un cube}
 <A COMPLETER>
 \paragraph{Escalader un mur}
-La cinématique inverse associée à la méthode TECCC de notre encadrant permet d'obtenir des mouvements globalement réalistes. Cette association permet de changer les positions et le nombre de prises sur le mur, permettant de concevoir plusieurs configurations différentes et offrant au final une variabilité quasi-infinie.
+La cinématique inverse associée à la méthode TECCC permet d'obtenir des mouvements globalement réalistes. Cette association permet de changer les positions et le nombre de prises sur le mur, permettant de concevoir plusieurs configurations différentes et offrant au final une variabilité quasi-infinie.
 
 \section{Technologies utilisées}
 \subsection{Création du jeu - Unity3D}
-<logo>
+\FigureEPS{h,t,b,p}{5cm}{Images/unity-logo.eps}{Logo d'Unity3D}{fig:unity}
 
 Afin de créer le jeu vidéo mettant en valeur ces techniques d'animation, nous avons choisi d'utiliser la plateforme Unity3D. Il s'agit d'un moteur de jeu, avec un IDE\footnote{Integrated Development Environment} intégré. Ce logiciel offre, même dans sa version gratuite, de vastes possibilités de manière accessible. Les jeux produits peuvent être compilés et compatibles aussi bien sur ordinateur (Windows, Mac OS, Linux) que sur appareil mobile (iOS, Android), navigateur web ou encore console de jeux (PlayStation, Xbox, Wii).
 
@@ -99,7 +107,7 @@ Unity3D propose ainsi des objets graphiques intégrés, des textures, et beaucoup 
 Ce logiciel nous a été fortement recommandé par notre encadrant car il est facile à prendre en main, nous soulageant ainsi de la difficulté de maîtrise technique d'un moteur du jeu. Cela nous a permis de nous concentrer sur l'élaboration des scripts de cinématique inverse et sur la création de l'environnement.
 
 \subsection{Création du chat - Blender}
-\FigureEPS{h,t,b,p}{8.5cm}{Images/blender.eps}{Logo de Blender}{fig:blender}
+\FigureEPS{h,t,b,p}{5cm}{Images/blender.eps}{Logo de Blender}{fig:blender}
 %\includegraphics[width=8.5cm]{./Images/blender.eps}
 
 Le héros du jeu, un chat, a dû être modélisé à partir d'éléments trouvés sur Internet, proposés gratuitement au téléchargement par des artistes. La mise en place du squelette du chat a demandé une étape de création supplémentaire sur le logiciel de modélisation et d'animation 3D, gratuit et open-source Blender. Un membre du groupe s'est formé parallèlement à la manipulation de ce logiciel. La création du squelette de l'animal a été une étape importante, car elle conditionne une partie non négligeable de la mise en place de l'algorithme de cinématique inverse, en particulier pour les contraintes articulaires. 
@@ -113,6 +121,8 @@ Sur les conseils de notre encadrant, nous nous sommes répartis les différentes t
 \end{itemize}
 Cette répartition est restée globalement fixe durant tout le projet.
 
+Parmi les différents aspects à réaliser pour ce projet, nous avons dû implémenter le passage d'un mode à l'autre, en gérant les animations correspondantes ; nous avons également dû implémenter les butées articulaires qui ne sont pas gérées par l'algorithme CCD, ou encore intégrer la méthode TECCC. 
+
 
 \subsection{Répartition des tâches}
 \subsection{Méthodologie}
@@ -122,7 +132,7 @@ Notre encadrant nous a bien conseillé sur les technologies à mettre en place, ai
 \subsubsection{Utilisation d'outils}
 Pour faciliter la coordination de chacun et le travail collaboratif, nous avons mis en place un système de versions Git sur GitHub. Cela nous a permis d'appréhender et d'expérimenter sur le long terme cet outil. Chaque aspect du jeu avait sa branche dédiée, que nous fusionnions sur la branche \texttt{master} de temps en temps. 
 
-Nous avons eu un peu de mal à gérer l'ensemble des fichiers générés par Unity3D pour chaque scène travaillée. En effet, le nombre impressionnant de fichiers cachés créés rendait l'utilisation de Git assez difficile.\\
+Nous avons eu un peu de mal à gérer l'ensemble des fichiers générés par Unity3D pour chaque scène travaillée. En effet, le nombre impressionnant de fichiers cachés créés rendait l'utilisation de Git assez difficile. Nous nous sommes rendu compte qu'il était compliqué d'intégrer les différents types de fichiers, depuis les scènes Unity3D (en binaire) aux fichiers cachés, en passant par les fichiers de configuration du projet ou ceux de l'utilisateur. Unity3D propose un système de gestion de version, mais uniquement réservé aux utilisateurs munis d'une licence \textit{Team} (\textit{Pro} + Add-on). \\
 
 
 Pour la gestion du projet, nous avons commencé à communiquer principalement par les moyens traditionnels (mail, SMS), rendant le suivi compliqué. Nous avons donc utilisé les pages de Wiki offertes par la plateforme GitHub pour héberger les comptes-rendus et les pages rendant compte de l'avancement de chacun sur la partie le concernant. Ainsi la fixation d'objectifs intermédiaires était facilitée, et la communication interne au groupe plus facile.  
@@ -157,12 +167,12 @@ Le projet étant assez vaste, de nombreuses améliorations sont possibles. En plus
 %	                  {fig:exemple}
 %	%------------------------------------------------------------------------------
 %	
-	Pour inclure une image, on doit aussi la convertir en EPS, avec
-	la commande \texttt{convert}\footnote{
-	disponible aussi sous Unix/Linux et à privilégier 
-	car elle génère un EPS tout à fait standard 
-	(au contraire de nombreux pilotes Windows).}
-	\texttt{~image image.eps}, qui accepte pratiquement tous les formats d'images.
+%	Pour inclure une image, on doit aussi la convertir en EPS, avec
+%	la commande \texttt{convert}\footnote{
+%	disponible aussi sous Unix/Linux et à privilégier 
+%	car elle génère un EPS tout à fait standard 
+%	(au contraire de nombreux pilotes Windows).}
+%	\texttt{~image image.eps}, qui accepte pratiquement tous les formats d'images.
 %	
 %	
 %	\subsection{Encore un titre de sous-section}
