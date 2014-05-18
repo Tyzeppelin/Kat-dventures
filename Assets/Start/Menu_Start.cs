@@ -1,20 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 public class Menu_Start : MonoBehaviour {
 
-	private Color s_color_idle;
-	private Color s_color_active;
-
-	private int s_size_idle = 100;
-	private int s_size_active = 110;
+	private int s_size_idle;
+	private int s_size_active;
 
 	public string levelName;
 
-	private GUIText menu;
-
-	private Resolution screenRes;
+	private int screenRes;
 
 	void OnMouseEnter() {
 		this.guiText.fontSize = s_size_active;
@@ -31,10 +25,10 @@ public class Menu_Start : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		screenRes = Screen.width;
+		s_size_idle = (int)(screenRes/13.6);
+		s_size_active = s_size_idle+10;
 		this.guiText.fontSize = s_size_idle;
-		screenRes = Screen.currentResolution;
-		Vector3 pos = new Vector3(Mathf.Atan(screenRes.width)/(2*Mathf.PI),Mathf.Atan(screenRes.height)/(2*Mathf.PI),0);
-		this.transform.position = pos;
 
 	}
 	
