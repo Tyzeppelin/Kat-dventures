@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     STYLE POUR LES EXPOS�S TECHNIQUES 
-%         3e ann�e INSA de Rennes
+%     STYLE POUR LES EXPOSES TECHNIQUES 
+%         3e année INSA de Rennes
 %
 %             NE PAS MODIFIER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,19 +10,19 @@
 \usepackage{exptech}       % Fichier (./exptech.sty) contenant les styles pour 
                            % l'expose technique (ne pas le modifier)
 
-%\linespread{1,6}          % Pour une version destin�e � un relecteur,
-                           % d�commenter cette commande (double interligne) 
+%\linespread{1,6}          % Pour une version destinée à un relecteur,
+                           % décommenter cette commande (double interligne) 
                            
-% UTILISEZ SPELL (correcteur orthographique) � acc�s simplifi� depuis XEmacs
+% UTILISEZ SPELL (correcteur orthographique) à accès simplifié depuis XEmacs
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{ \textbf{R�alisation d'un jeu vid�o d'escalade afin de valoriser un travail de recherche en 
-animation proc�durale} }
-\markright{Style pour l'expos� technique} 
+\title{ \textbf{Réalisation d'un jeu vidéo d'escalade afin de valoriser un travail de recherche en 
+animation procédurale} }
+\markright{Style pour l'exposé technique} 
 
-\author{Fran�ois \textsc{Boschet}, Thomas \textsc{Giraudeau}, \\
-        Delphine \textsc{Millet}, Paul \textsc{Rivi�re} \\
+\author{François \textsc{Boschet}, Thomas \textsc{Giraudeau}, \\
+        Delphine \textsc{Millet}, Paul \textsc{Rivière} \\
         Kevin \textsc{Thek} \\
         \\
         Encadrant : Steve \textsc{Tonneau}}
@@ -33,117 +33,117 @@ animation proc�durale} }
 
 \begin{document}          
 
-\maketitle                 % G�n�re le titre
-\thispagestyle{empty}      % Supprime le num�ro de page sur la 1re page
+\maketitle                 % Génère le titre
+\thispagestyle{empty}      % Supprime le numéro de page sur la 1re page
 
 
 
 \begin{abstract}
-Ce rapport pr�sente le d�ploiement de notre projet d'�tudes pratiques. L'objectif de ce projet est de mettre en avant un travail de recherche en animation proc�durale. Il consiste en la conception et l'impl�mentation d'un algorithme de cin�matique inverse dans un jeu vid�o d'escalade � concevoir �galement.
+Ce rapport présente le déploiement de notre projet d'études pratiques. L'objectif de ce projet est de mettre en avant un travail de recherche en animation procédurale. Il consiste en la conception et l'implémentation d'un algorithme de cinématique inverse dans un jeu vidéo d'escalade à concevoir également.
 
 \end{abstract} 
 
 
 \section{Introduction}  
 
-Les probl�matiques d'animation dans les milieux du jeu vid�o et du dessin anim� sont des enjeux importants, car extr�mement perceptibles. En effet, dans la plupart des importants projets de ce type, c'est une arm�e d'artistes et de techniciens qui {\oe}uvrent afin de cr�er des mouvements toujours plus r�alistes. \\
-Cependant, malgr� l'�volution constante dans ce domaine et le niveau de qualit� atteint aujourd'hui, les techniques d'animation actuelles demeurent insatisfaisantes. Par exemple, certaines configurations de l'environnement peuvent prendre en d�faut l'animation cr��e, comme par exemple le d�placement d'un objet que prend le h�ros d'un jeu vid�o, ou bien la modification d'une sc�ne dans la cr�ation d'un film d'animation. Autant de situations qui complexifient la cr�ation de m�dias.\\   
+Les problématiques d'animation dans les milieux du jeu vidéo et du dessin animé sont des enjeux importants, car extrêmement perceptibles. En effet, dans la plupart des importants projets de ce type, c'est une armée d'artistes et de techniciens qui {\oe}uvrent afin de créer des mouvements toujours plus réalistes. \\
+Cependant, malgré l'évolution constante dans ce domaine et le niveau de qualité atteint aujourd'hui, les techniques d'animation actuelles demeurent insatisfaisantes. Par exemple, certaines configurations de l'environnement peuvent prendre en défaut l'animation créée, comme par exemple le déplacement d'un objet que prend le héros d'un jeu vidéo, ou bien la modification d'une scène dans la création d'un film d'animation. Autant de situations qui complexifient la création de médias.\\   
 <image powerpoint spygame>\\
-Parmi les pistes propos�es pour r�soudre cette probl�matique, l'animation proc�durale fait partie des solutions les plus int�ressantes, et c'est ce que nous avons impl�ment� dans un jeu vid�o, nomm� \og Kat'dventures \fg{}  . Nous reviendrons sur l'animation proc�durale dans une premi�re partie, avant d'expliquer le gameplay du jeu. Nous �voquerons les technologies utilis�es pour cr�er le jeu en lui-m�me, puis nous reviendrons bri�vement sur l'ex�cution du projet.
+Parmi les pistes proposées pour résoudre cette problématique, l'animation procédurale fait partie des solutions les plus intéressantes, et c'est ce que nous avons implémenté dans un jeu vidéo, nommé \og Kat'dventures \fg{}  . Nous reviendrons sur l'animation procédurale dans une première partie, avant d'expliquer le gameplay du jeu. Nous évoquerons les technologies utilisées pour créer le jeu en lui-même, puis nous reviendrons brièvement sur l'exécution du projet.
 
 
-\section{Animation proc�durale}  
-%Parmi les techniques d'animation, celles d'animation proc�durale a la capacit� int�ressante d'adapter le mouvement au milieu o� l'action se d�roule. En effet, elle consiste en la cr�ation du mouvement par l'ordinateur en fonction de l'environnement. 
-Parmi les techniques d'animation nous retrouvons deux m�thodes principales pour cr�er les mouvements : 
+\section{Animation procédurale}  
+%Parmi les techniques d'animation, celles d'animation procédurale a la capacité intéressante d'adapter le mouvement au milieu où l'action se déroule. En effet, elle consiste en la création du mouvement par l'ordinateur en fonction de l'environnement. 
+Parmi les techniques d'animation nous retrouvons deux méthodes principales pour créer les mouvements : 
 \begin{itemize}
-	\item L'animation proc�durale que nous allons d�velopper plus bas.
-	\item La \textit{Motion Capture}, qui consiste en la cr�ation du mouvement par des cascadeurs munis de capteurs. 
+	\item L'animation procédurale que nous allons développer plus bas.
+	\item La \textit{Motion Capture}, qui consiste en la création du mouvement par des cascadeurs munis de capteurs. 
 \end{itemize}
-Mais pourquoi utiliser des techniques d'animation proc�durale, plut�t que la \textit{Motion Capture} ? En r�alit�, la \textit{Motion Capture}, m�me si elle permet d'obtenir des mouvements r�alistes, car obtenus directement depuis l'homme, pose le probl�me de la r�utilisation des mouvements. En effet, un mouvement issu de \textit{Motion Capture} est contextuel � un environnement sp�cifique, et ne peut donc pas �tre transpos� � un autre environnement.
+Mais pourquoi utiliser des techniques d'animation procédurale, plutôt que la \textit{Motion Capture} ? En réalité, la \textit{Motion Capture}, même si elle permet d'obtenir des mouvements réalistes, car obtenus directement depuis l'homme, pose le problème de la réutilisation des mouvements. En effet, un mouvement issu de \textit{Motion Capture} est contextuel à un environnement spécifique, et ne peut donc pas être transposé à un autre environnement.
 
-Dans notre cas, nous allons travailler sur les techniques d'animation proc�durale. Ce mouvement sera issu d'algorithmes math�matiques, et devra �galement respecter les contraintes inspir�es du monde r�el (gravit�, limites articulaires ou encore confort de la position). Les moyens de mettre en place pratiquement l'animation proc�durale s'appellent les m�thodes proc�durales.
+Dans notre cas, nous allons travailler sur les techniques d'animation procédurale. Ce mouvement sera issu d'algorithmes mathématiques, et devra également respecter les contraintes inspirées du monde réel (gravité, limites articulaires ou encore confort de la position). Les moyens de mettre en place pratiquement l'animation procédurale s'appellent les méthodes procédurales.
 
-\subsection{Cin�matique inverse}
-Les m�thodes proc�durales sont regroup�es en plusieurs familles. Nous nous sommes int�ress�s � l'une d'elles, la cin�matique inverse. Le but de cette m�thode est simple : une extr�mit� de membre doit �tre le plus pr�s possible d'une cible fix�e. Le d�placement de l'extr�mit� du membre va entra�ner un d�placement des autres membres reli�s avec elle, jusqu'� obtenir une position pour chaque membre.
+\subsection{Cinématique inverse}
+Les méthodes procédurales sont regroupées en plusieurs familles. Nous nous sommes intéressés à l'une d'elles, la cinématique inverse. Le but de cette méthode est simple : une extrémité de membre doit être le plus près possible d'une cible fixée. Le déplacement de l'extrémité du membre va entraîner un déplacement des autres membres reliés avec elle, jusqu'à obtenir une position pour chaque membre.
 
 <image powerpoint avec bonhomme>
 
-Pour obtenir ces positions, diff�rents algorithmes math�matiques sont disponibles : << Cyclic Coordinate Descent >> (CCD), << Forward And Backward Reaching Inverse Kinematics >> (FABRIK), l'utilisation de la matrice jacobienne, etc. Parmi tous ceux-l�, nous avons choisi d'impl�menter CCD, car il est plus accessible et plus �conome en calcul ce qui est un point important dans un jeu vid�o, afin de garder une fluidit� des mouvements correcte. Cet algorithme va calculer la position optimale d'un membre en effectuant une rotation, puis r�it�re ce calcul sur le membre ``parent'', et ainsi de suite.
+Pour obtenir ces positions, différents algorithmes mathématiques sont disponibles : << Cyclic Coordinate Descent >> (CCD), << Forward And Backward Reaching Inverse Kinematics >> (FABRIK), l'utilisation de la matrice jacobienne, etc. Parmi tous ceux-là, nous avons choisi d'implémenter CCD, car il est plus accessible et plus économe en calcul ce qui est un point important dans un jeu vidéo, afin de garder une fluidité des mouvements correcte. Cet algorithme va calculer la position optimale d'un membre en effectuant une rotation, puis réitère ce calcul sur le membre ``parent'', et ainsi de suite.
 
 <revoir algorithme, formule de math>
 
 
 
 \subsection{Gestion des contraintes articulaires}
-Cependant, contrairement � d'autres algorithmes de cin�matique inverse comme FABRIK, CCD ne g�re pas les contraintes articulaires. Il s'agit de prendre en compte les but�es articulaires naturelles du squelette du personnage, afin de g�n�rer des mouvements contraires aux conditions du monde r�el. L'enjeu est d'�viter les positions aberrantes du personnage, rendant impossible le mouvement. Ainsi, nous avons d� g�rer les contraintes articulaires manuellement, en parall�le de l'algorithme CCD.
+Cependant, contrairement à d'autres algorithmes de cinématique inverse comme FABRIK, CCD ne gère pas les contraintes articulaires. Il s'agit de prendre en compte les butées articulaires naturelles du squelette du personnage, afin de générer des mouvements contraires aux conditions du monde réel. L'enjeu est d'éviter les positions aberrantes du personnage, rendant impossible le mouvement. Ainsi, nous avons dû gérer les contraintes articulaires manuellement, en parallèle de l'algorithme CCD.
 
 \subsection{Choix des cibles}
-Nous avons vu que la cin�matique inverse a besoin de cibles sur lesquelles doivent pointer les extr�mit�s des membres. L� encore une probl�matique se dessine : comment choisir la meilleure cible possible en fonction de l'environnement, mais �galement du personnage, afin d'obtenir un mouvement r�aliste ?
+Nous avons vu que la cinématique inverse a besoin de cibles sur lesquelles doivent pointer les extrémités des membres. Là encore une problématique se dessine : comment choisir la meilleure cible possible en fonction de l'environnement, mais également du personnage, afin d'obtenir un mouvement réaliste ?
 
-Afin de rem�dier � cela, nous avons utilis� la m�thode introduite dans le papier \textit{Task Efficient Computation of Contact Configurations}  (TECCC) \cite{tonneau:latex:14}. Cette m�thode analyse le mouvement global voulu par l'utilisateur (monter, descendre, avancer,...) et adapte alors le point cible en fonction de ce qui entoure le personnage. 
+Afin de remédier à cela, nous avons utilisé la méthode introduite dans le papier \textit{Task Efficient Computation of Contact Configurations}  (TECCC) \cite{tonneau:latex:14}. Cette méthode analyse le mouvement global voulu par l'utilisateur (monter, descendre, avancer,...) et adapte alors le point cible en fonction de ce qui entoure le personnage. 
 
 
 \section{Gameplay}
-Kat'dventures est un jeu de plateforme en 3D, dont le but est d'aider un chat � atteindre une pelote de laine situ�e au bout d'un niveau constitu� d'obstacles. Face � certains obstacles, les capacit�s normales du chat ne seront pas efficaces. Il devra alors passer dans un mode lui offrant des super pouvoirs !
+Kat'dventures est un jeu de plateforme en 3D, dont le but est d'aider un chat à atteindre une pelote de laine située au bout d'un niveau constitué d'obstacles. Face à certains obstacles, les capacités normales du chat ne seront pas efficaces. Il devra alors passer dans un mode lui offrant des super pouvoirs !
 \subsection{Mode ordinaire}
-Le joueur commence le jeu avec un chat normal : il marche et saute comme un chat commun. Cela pourrait suffire pour franchir le niveau, mais certains obstacles restent infranchissables malgr� tout.
+Le joueur commence le jeu avec un chat normal : il marche et saute comme un chat commun. Cela pourrait suffire pour franchir le niveau, mais certains obstacles restent infranchissables malgré tout.
 
 \subsection{Mode super-pouvoirs}
-C'est alors que le mode super pouvoir devient n�cessaire. Il peut �tre d�clench� en appuyant sur un bouton du clavier. Lorsque ce mode est activ�, le chat se redresse et acquiert certaines aptitudes humaines, comme celle de pousser ou encore d'escalader des parois. Ces fonctionnalit�s permettent de mettre en avant les possibilit�s offertes par la cin�matique inverse.
+C'est alors que le mode super pouvoir devient nécessaire. Il peut être déclenché en appuyant sur un bouton du clavier. Lorsque ce mode est activé, le chat se redresse et acquiert certaines aptitudes humaines, comme celle de pousser ou encore d'escalader des parois. Ces fonctionnalités permettent de mettre en avant les possibilités offertes par la cinématique inverse.
 
 \paragraph{Pousser un cube}
 Quand il est debout, la cinématique permet au chat de poser ses pattes sur un cube. Il peut donc déplacer le cube en avançant.
 \paragraph{Escalader un mur}
-La cin�matique inverse associ�e � la m�thode TECCC permet d'obtenir des mouvements globalement r�alistes. Cette association permet de changer les positions et le nombre de prises sur le mur, permettant de concevoir plusieurs configurations diff�rentes et offrant au final une variabilit� quasi-infinie.
+La cinématique inverse associée à la méthode TECCC permet d'obtenir des mouvements globalement réalistes. Cette association permet de changer les positions et le nombre de prises sur le mur, permettant de concevoir plusieurs configurations différentes et offrant au final une variabilité quasi-infinie.
 
-\section{Technologies utilis�es}
-\subsection{Cr�ation du jeu - Unity3D}
+\section{Technologies utilisées}
+\subsection{Création du jeu - Unity3D}
 \FigureEPS{h,t,b,p}{5cm}{Images/unity-logo.eps}{Logo d'Unity3D}{fig:unity}
 
-Afin de cr�er le jeu vid�o mettant en valeur ces techniques d'animation, nous avons choisi d'utiliser la plateforme Unity3D. Il s'agit d'un moteur de jeu, avec un IDE\footnote{Integrated Development Environment} int�gr�. Ce logiciel offre, m�me dans sa version gratuite, de vastes possibilit�s de mani�re accessible. Les jeux produits peuvent �tre compil�s et compatibles aussi bien sur ordinateur (Windows, Mac OS, Linux) que sur appareil mobile (iOS, Android), navigateur web ou encore console de jeux (PlayStation, Xbox, Wii).
+Afin de créer le jeu vidéo mettant en valeur ces techniques d'animation, nous avons choisi d'utiliser la plateforme Unity3D. Il s'agit d'un moteur de jeu, avec un IDE\footnote{Integrated Development Environment} intégré. Ce logiciel offre, même dans sa version gratuite, de vastes possibilités de manière accessible. Les jeux produits peuvent être compilés et compatibles aussi bien sur ordinateur (Windows, Mac OS, Linux) que sur appareil mobile (iOS, Android), navigateur web ou encore console de jeux (PlayStation, Xbox, Wii).
 
-Unity3D propose ainsi des objets graphiques int�gr�s, des textures, et beaucoup d'autres �l�ments. Pour avoir des comportements plus personnalis�s, des scripts en \texttt{Javascript}, \texttt{C\#} ou \texttt{Boo} peuvent �tre associ�s aux �l�ments de jeu par un simple glisser-d�poser. Enfin, le logiciel b�n�ficie d'une tr�s grande communaut�, permettant d'aider au mieux les d�butants. 
+Unity3D propose ainsi des objets graphiques intégrés, des textures, et beaucoup d'autres éléments. Pour avoir des comportements plus personnalisés, des scripts en \texttt{Javascript}, \texttt{C\#} ou \texttt{Boo} peuvent être associés aux éléments de jeu par un simple glisser-déposer. Enfin, le logiciel bénéficie d'une très grande communauté, permettant d'aider au mieux les débutants. 
 
-Ce logiciel nous a �t� fortement recommand� par notre encadrant car il est facile � prendre en main, nous soulageant ainsi de la difficult� de ma�trise technique d'un moteur du jeu. Cela nous a permis de nous concentrer sur l'�laboration des scripts de cin�matique inverse et sur la cr�ation de l'environnement.
+Ce logiciel nous a été fortement recommandé par notre encadrant car il est facile à prendre en main, nous soulageant ainsi de la difficulté de maîtrise technique d'un moteur du jeu. Cela nous a permis de nous concentrer sur l'élaboration des scripts de cinématique inverse et sur la création de l'environnement.
 
-\subsection{Cr�ation du chat - Blender}
+\subsection{Création du chat - Blender}
 \FigureEPS{h,t,b,p}{5cm}{Images/blender.eps}{Logo de Blender}{fig:blender}
 %\includegraphics[width=8.5cm]{./Images/blender.eps}
 
-Le h�ros du jeu, un chat, a d� �tre mod�lis� � partir d'�l�ments trouv�s sur Internet, propos�s gratuitement au t�l�chargement par des artistes. La mise en place du squelette du chat a demand� une �tape de cr�ation suppl�mentaire sur le logiciel de mod�lisation et d'animation 3D, gratuit et open-source Blender. Un membre du groupe s'est form� parall�lement � la manipulation de ce logiciel. La cr�ation du squelette de l'animal a �t� une �tape importante, car elle conditionne une partie non n�gligeable de la mise en place de l'algorithme de cin�matique inverse, en particulier pour les contraintes articulaires. 
+Le héros du jeu, un chat, a dû être modélisé à partir d'éléments trouvés sur Internet, proposés gratuitement au téléchargement par des artistes. La mise en place du squelette du chat a demandé une étape de création supplémentaire sur le logiciel de modélisation et d'animation 3D, gratuit et open-source Blender. Un membre du groupe s'est formé parallèlement à la manipulation de ce logiciel. La création du squelette de l'animal a été une etape importante, car elle conditionne une partie non négligeable de la mise en place de l'algorithme de cinématique inverse, en particulier pour les contraintes articulaires. 
 
-\section{Ex�cution du projet}
-Sur les conseils de notre encadrant, nous nous sommes r�partis les diff�rentes t�ches du projet : 
+\section{Exécution du projet}
+Sur les conseils de notre encadrant, nous nous sommes répartis les différentes tâches du projet : 
 \begin{itemize}
-\item Fran�ois et Delphine se sont charg�s du level-design et de l'aspect graphique ;
-\item Thomas s'est charg� de la gestion du chat, notamment sa mod�lisation en 3D ;
-\item K�vin et Paul se sont charg�s de la cr�ation des scripts du jeu.
+\item François et Delphine se sont chargés du level-design et de l'aspect graphique ;
+\item Thomas s'est chargé de la gestion du chat, notamment sa modélisation en 3D ;
+\item Kévin et Paul se sont chargés de la création des scripts du jeu.
 \end{itemize}
-Cette r�partition est rest�e globalement fixe durant tout le projet.
+Cette répartition est restée globalement fixe durant tout le projet.
 
-Parmi les diff�rents aspects � r�aliser pour ce projet, nous avons d� impl�menter le passage d'un mode � l'autre, en g�rant les animations correspondantes ; nous avons �galement d� impl�menter les but�es articulaires qui ne sont pas g�r�es par l'algorithme CCD, ou encore int�grer la m�thode TECCC. 
+Parmi les différents aspects à réaliser pour ce projet, nous avons dû implémenter le passage d'un mode à l'autre, en gérant les animations correspondantes ; nous avons également dû implémenter les butées articulaires qui ne sont pas gérées par l'algorithme CCD, ou encore intégrer la méthode TECCC. 
 
 
-\subsection{R�partition des t�ches}
-\subsection{M�thodologie}
+\subsection{Répartition des tâches}
+\subsection{Méthodologie}
 \subsubsection{Encadrement}
-Notre encadrant nous a bien conseill� sur les technologies � mettre en place, ainsi que pour la cr�ation des scripts. Au d�but du projet les r�unions ont �t� assez fr�quentes afin d'�tre s�rs que nous avancions dans le bon sens. Quand le projet �tait bien commenc�, nous avons espac� les rencontres afin d'avoir le temps de pr�senter des avanc�es int�ressantes. 
+Notre encadrant nous a bien conseillé sur les technologies à mettre en place, ainsi que pour la création des scripts. Au début du projet les réunions ont été assez fréquentes afin d'être sûrs que nous avancions dans le bon sens. Quand le projet était bien commencé, nous avons espacé les rencontres afin d'avoir le temps de présenter des avancées intéressantes. 
 
 \subsubsection{Utilisation d'outils}
-Pour faciliter la coordination de chacun et le travail collaboratif, nous avons mis en place un syst�me de versions Git sur GitHub. Cela nous a permis d'appr�hender et d'exp�rimenter sur le long terme cet outil. Chaque aspect du jeu avait sa branche d�di�e, que nous fusionnions sur la branche \texttt{master} de temps en temps. 
+Pour faciliter la coordination de chacun et le travail collaboratif, nous avons mis en place un système de versions Git sur GitHub. Cela nous a permis d'appréhender et d'expérimenter sur le long terme cet outil. Chaque aspect du jeu avait sa branche dédiée, que nous fusionnions sur la branche \texttt{master} de temps en temps. 
 
-Nous avons eu un peu de mal � g�rer l'ensemble des fichiers g�n�r�s par Unity3D pour chaque sc�ne travaill�e. En effet, le nombre impressionnant de fichiers cach�s cr��s rendait l'utilisation de Git assez difficile. Nous nous sommes rendu compte qu'il �tait compliqu� d'int�grer les diff�rents types de fichiers, depuis les sc�nes Unity3D (en binaire) aux fichiers cach�s, en passant par les fichiers de configuration du projet ou ceux de l'utilisateur. Unity3D propose un syst�me de gestion de version, mais uniquement r�serv� aux utilisateurs munis d'une licence \textit{Team} (\textit{Pro} + Add-on). \\
-
-
-Pour la gestion du projet, nous avons commenc� � communiquer principalement par les moyens traditionnels (mail, SMS), rendant le suivi compliqu�. Nous avons donc utilis� les pages de Wiki offertes par la plateforme GitHub pour h�berger les comptes-rendus et les pages rendant compte de l'avancement de chacun sur la partie le concernant. Ainsi la fixation d'objectifs interm�diaires �tait facilit�e, et la communication interne au groupe plus facile.  
+Nous avons eu un peu de mal à gérer l'ensemble des fichiers générés par Unity3D pour chaque scène travaillée. En effet, le nombre impressionnant de fichiers cachés créés rendait l'utilisation de Git assez difficile. Nous nous sommes rendu compte qu'il était compliqué d'intégrer les différents types de fichiers, depuis les scènes Unity3D (en binaire) aux fichiers cachés, en passant par les fichiers de configuration du projet ou ceux de l'utilisateur. Unity3D propose un système de gestion de version, mais uniquement réservé aux utilisateurs munis d'une licence \textit{Team} (\textit{Pro} + Add-on). \\
 
 
-\section{Id�es d'am�lioration}
-Le projet �tant assez vaste, de nombreuses am�liorations sont possibles. En plus de l'ajout d'autres niveaux, nous pourrions citer : 
-\paragraph{L'int�gration d'un timer avec des objectifs de scoring :} une �chelle de score pourrait �tre ajout�, en tenant compte du temps pass� sur chaque niveau.
-\paragraph{Ajout de puzzles � utiliser avec une WiiMote :} un puzzle rapide pourrait finir le niveau. Nous pourrions diriger une patte avant du chat, qui devrait suivre un pointeur laser pour qu'il appuie sur diff�rents boutons. Des puzzles vari�s peuvent �tre consid�r�s : taquin, \textit{block breaker}, etc.
-\paragraph{Permettre d'autres mouvements au chat :} l'�largissement des possibilit�s des mouvements du chat permettrait la cr�ation de nouveaux obstacles (des tuyaux � grimper ou des sauts de l'ange par exemple).
-\paragraph{Am�liorer les graphismes :} le r�alisme et le rendu des textures peuvent �tre perfectionn�s.
+Pour la gestion du projet, nous avons commencé à communiquer principalement par les moyens traditionnels (mail, SMS), rendant le suivi compliqué. Nous avons donc utilisé les pages de Wiki offertes par la plateforme GitHub pour héberger les comptes-rendus et les pages rendant compte de l'avancement de chacun sur la partie le concernant. Ainsi la fixation d'objectifs intermédiaires était facilitée, et la communication interne au groupe plus facile.  
+
+
+\section{Idées d'amélioration}
+Le projet étant assez vaste, de nombreuses améliorations sont possibles. En plus de l'ajout d'autres niveaux, nous pourrions citer : 
+\paragraph{L'intégration d'un timer avec des objectifs de scoring :} une échelle de score pourrait être ajouté, en tenant compte du temps passé sur chaque niveau.
+\paragraph{Ajout de puzzles à utiliser avec une WiiMote :} un puzzle rapide pourrait finir le niveau. Nous pourrions diriger une patte avant du chat, qui devrait suivre un pointeur laser pour qu'il appuie sur différents boutons. Des puzzles variés peuvent être considérés : taquin, \textit{block breaker}, etc.
+\paragraph{Permettre d'autres mouvements au chat :} l'élargissement des possibilités des mouvements du chat permettrait la création de nouveaux obstacles (des tuyaux à grimper ou des sauts de l'ange par exemple).
+\paragraph{Améliorer les graphismes :} le réalisme et le rendu des textures peuvent être perfectionnés.
 \\
 
 
@@ -192,9 +192,9 @@ Le projet �tant assez vaste, de nombreuses am�liorations sont possibles. En 
 
 \section{Conclusion} 
  
-Le projet Kat'dventures nous a permis d'appr�hender la cin�matique inverse, et de mani�re plus large les m�thodes proc�durales. Nous nous sommes rendu compte des possibilit�s que cela offre pour les cr�ateurs de jeux vid�os, mais aussi le travail de recherche que cela demande pour cr�er les algorithmes. 
+Le projet Kat'dventures nous a permis d'appréhender la cinématique inverse, et de manière plus large les méthodes procédurales. Nous nous sommes rendu compte des possibilités que cela offre pour les créateurs de jeux vidéos, mais aussi le travail de recherche que cela demande pour créer les algorithmes. 
 
-Il s'agit bien de cr�er des animations les plus r�alistes possible tout en garantissant l'adaptation du mouvement � l'environnement existant. C'est une bonne solution pour �viter les sch�mas r�p�titifs dans les jeux vid�os exploitant d'autres techniques comme la motion capture. 
+Il s'agit bien de créer des animations les plus réalistes possible tout en garantissant l'adaptation du mouvement à l'environnement existant. C'est une bonne solution pour éviter les schémas répétitifs dans les jeux vidéos exploitant d'autres techniques comme la motion capture. 
 
 \bibliography{biblio}
 
