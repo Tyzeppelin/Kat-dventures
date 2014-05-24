@@ -19,7 +19,7 @@
 
 \title{ \textbf{Réalisation d'un jeu vidéo d'escalade afin de valoriser un travail de recherche en 
 animation procédurale} }
-\markright{Style pour l'exposé technique} 
+\markright{Etude pratique 2014} 
 
 \author{François \textsc{Boschet}, Thomas \textsc{Giraudeau}, \\
         Delphine \textsc{Millet}, Paul \textsc{Rivière} \\
@@ -47,8 +47,8 @@ Ce rapport présente le déploiement de notre projet d'études pratiques. L'obje
 \section{Introduction}  
 
 Les problématiques d'animation dans les milieux du jeu vidéo et du dessin animé sont des enjeux importants, car extrêmement perceptibles. En effet, dans la plupart des importants projets de ce type, c'est une armée d'artistes et de techniciens qui {\oe}uvrent afin de créer des mouvements toujours plus réalistes. \\
-Cependant, malgré l'évolution constante dans ce domaine et le niveau de qualité atteint aujourd'hui, les techniques d'animation actuelles demeurent insatisfaisantes. Par exemple, certaines configurations de l'environnement peuvent prendre en défaut l'animation créée, comme par exemple le déplacement d'un objet que prend le héros d'un jeu vidéo, ou bien la modification d'une scène dans la création d'un film d'animation. Autant de situations qui complexifient la création de médias.\\   
-<image powerpoint spygame>\\
+Cependant, malgré l'évolution constante dans ce domaine et le niveau de qualité atteint aujourd'hui, les techniques d'animation actuelles demeurent insatisfaisantes. Par exemple, certaines configurations de l'environnement peuvent prendre en défaut l'animation créée, comme par exemple le déplacement d'un objet que prend le héros d'un jeu vidéo (voir fig.\ref{fig:spygame}), ou bien la modification d'une scène dans la création d'un film d'animation. Autant de situations qui complexifient la création de médias.\\   
+\FigureEPS{h,t,b,p}{7cm}{Images/spygame.eps}{Lorsque l'environnement change, le mouvement n'est pas toujours adapté.}{fig:spygame} 
 Parmi les pistes proposées pour résoudre cette problématique, l'animation procédurale fait partie des solutions les plus intéressantes, et c'est ce que nous avons implémenté dans un jeu vidéo, nommé \og Kat'dventures \fg{}  . Nous reviendrons sur l'animation procédurale dans une première partie, avant d'expliquer le gameplay du jeu. Nous évoquerons les technologies utilisées pour créer le jeu en lui-même, puis nous reviendrons brièvement sur l'exécution du projet.
 
 
@@ -66,11 +66,11 @@ Dans notre cas, nous allons travailler sur les techniques d'animation procédura
 \subsection{Cinématique inverse}
 Les méthodes procédurales sont regroupées en plusieurs familles. Nous nous sommes intéressés à l'une d'elles, la cinématique inverse. Le but de cette méthode est simple : une extrémité de membre doit être le plus près possible d'une cible fixée. Le déplacement de l'extrémité du membre va entraîner un déplacement des autres membres reliés avec elle, jusqu'à obtenir une position pour chaque membre.
 
-<image powerpoint avec bonhomme>
+\FigureEPS{h,t,b,p}{6cm}{Images/ik.eps}{Schéma d'illustration de la cinématique inverse}{fig:ik}
 
-Pour obtenir ces positions, différents algorithmes mathématiques sont disponibles : << Cyclic Coordinate Descent >> (CCD), << Forward And Backward Reaching Inverse Kinematics >> (FABRIK), l'utilisation de la matrice jacobienne, etc. Parmi tous ceux-là, nous avons choisi d'implémenter CCD, car il est plus accessible et plus économe en calcul ce qui est un point important dans un jeu vidéo, afin de garder une fluidité des mouvements correcte. Cet algorithme va calculer la position optimale d'un membre en effectuant une rotation, puis réitère ce calcul sur le membre ``parent'', et ainsi de suite.
+Pour obtenir ces positions, différents algorithmes mathématiques sont disponibles : \textit{Cyclic Coordinate Descent} (CCD), \textit{Forward And Backward Reaching Inverse Kinematics} (FABRIK), l'utilisation de la matrice jacobienne, etc. Parmi tous ceux-là, nous avons choisi d'implémenter CCD, car il est plus accessible et plus économe en calcul ce qui est un point important dans un jeu vidéo, afin de garder une fluidité des mouvements correcte. Cet algorithme va calculer la position optimale d'un membre en effectuant une rotation, puis réitère ce calcul sur le membre ``parent'', et ainsi de suite.
 
-<revoir algorithme, formule de math>
+Pour plus de détail sur l'algorithme CCD, nous vous renvoyons à la documentation technique.
 
 
 
