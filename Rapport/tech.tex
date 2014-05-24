@@ -17,9 +17,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{ \textbf{Réalisation d'un jeu vidéo d'escalade afin de valoriser un travail de recherche en 
-animation procédurale} }
-\markright{Style pour l'exposé technique} 
+\title{ \textsc{Kat'dventures} -- Documentation technique }
+\markright{Etude pratique 2014} 
 
 %\author{François \textsc{Boschet}, Thomas \textsc{Giraudeau}, \\
 %        Delphine \textsc{Millet}, Paul \textsc{Rivière} \\
@@ -40,18 +39,41 @@ animation procédurale} }
 Dans le mode normal, nous utilisons des animations créées avec le logiciel Blender. Vu que le sol est plat, le mouvement reste réaliste. Les animations concernées sont : l’attente, la marche et le saut. 
 
 \section{Cinématique inverse}
-L’algorithme de cinématique inverse CCD a été implémenté dans le jeu sous la forme du script CCD3d.cs . 
+L’algorithme de cinématique inverse CCD a été implémenté dans le jeu sous la forme du script \texttt{CCD3d.cs}.
+\paragraph{Description de l'algorithme CCD} 
+\subparagraph{Nomenclature}
+\begin{itemize}
+\item $p_i$ est la position d'une articulation $q_i$ du bras ;
+\item $p_e$ est la position de l'effecteur (c'est-à-dire du bout du bras) ;
+\item $p_t$ est la position de la cible à atteindre par l'effecteur. 
+\end{itemize} 
 
-\section{Passage d’un mode à l’autre}
-Le choix de passage d’un mode à l’autre est dicté par la pression d’une touche par le joueur. À ce moment-là, le script <INSERER> s’active, et procède au redressement du chat, de telle sorte qu’il soit dans une posture humaine. 
+\subparagraph{Déroulement de l'agorithme}
+Point de départ : l'articulation la plus proche de l'effecteur ($q_{n-1}$).
+
+\begin{itemize}
+\item On calcule $\alpha$ l'angle formé entre les deux vecteurs $\vec{q_i p_e}$ et $\vec{q_i p_t}$
+\item On fait une rotation de centre $p_i$ et d'angle $\alpha$ autour de l'axe $\vec{q_i p_e}\land\vec{q_i p_t}$, ce qui permet d'aligner $\vec{q_i p_e}$ et $\vec{q_i p_t}$
+\item Si la distance entre l'effecteur et la cible (c'est-à-dire $||\vec{p_e p_t}||$)devient plus petite à un nombre $\epsilon$ fixé, l'objectif est atteint. 
+\item Dans le cas contraire, deux choix : 
+\begin{itemize}
+\item Si on n'est pas arrivé à la racine du membre ($i>0$), on itère une autre fois avec l'articulation $q_{i-1}$.
+\item Si $i<0$, cela veut dire qu'on est arrivé à la racine du membre. On recommence alors avec $q_{n-1}$.
+\end{itemize}
+\end{itemize}
+
+\section{Passage d'un mode à l’autre}
+Le choix de passage d'un mode à l'autre est dicté par la pression d'une touche par le joueur. À ce moment-là, le script <INSERER> s'active, et procède au redressement du chat, de telle sorte qu'il soit dans une posture humaine. 
+
+\section{Mouvements en mode super-pouvoirs}
+Pour faire bouger le chat en position debout, nous nous sommes appuyés sur la bibliothèque \textit{Locomotion System} développé par Rune Skovbo Johansen. Cet ensemble de script utilise la cinématique inverse pour obtenir un mouvement réaliste et similaire à celui d'un humain.
 
 \section{Choix des prises}
-Nous utilisons la méthode de notre encadrant, implémenté ici sous le nom de CatManipulatibility.cs
+Nous utilisons la méthode de notre encadrant, implémenté ici sous le nom de \texttt{CatManipulatibility.cs}.
 <insérer algo >
 
 \section{Intégration des scènes}
-Notre mode de développement consistait en la création d’une scène par partie de parcours. Ainsi le mur d’escalade ou encore le cube ont été fait chacun dans une scène différente. Nous avons dû exporter chaque scène comme prefab. Chaque prefab contient les informations de la scène, comme la disposition des éléments, les textures, etc.
-Les prefabs ont été assemblées dans la scène finale pour donner lieu au niveau global.
+Notre mode de développement consistait en la création d’une scène par partie de parcours. Ainsi le mur d’escalade ou encore le cube ont été fait chacun dans une scène différente. 
 
 \section{Menu et Interface Utilisateur}
 
