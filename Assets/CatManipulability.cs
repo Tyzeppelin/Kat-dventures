@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CatManipulability : MonoBehaviour{
+public class CatManipulability{
 	private const float epsilon = 0.001f;
+	private const float epsilon2 = 0.0000000000001f;
 	private Transform from_;
 	private Transform effector_;
 	private int dim;
@@ -32,15 +33,15 @@ public class CatManipulability : MonoBehaviour{
 		float [,] dirT = new float[1,3];
 		// init directional vector
 		dir[0,0] = direction.x; dirT[0,0] = direction.x;
-		dir[1,0] = direction.y; dirT[0,1] = direction.z;
+		dir[1,0] = direction.y; dirT[0,1] = direction.y;
 		dir[2,0] = direction.z; dirT[0,2] = direction.z;
 		// computing jacobian matrix
-		ComputeJacobian(jacobian);
+		ComputeJacobian(jacobian, jacobianTr);
 		// jacobian product
 		Multiply(jacobian, jacobianTr, res);
 		Multiply(dirT, res, restmp);
 		Multiply(restmp, dir, value);
-		return value[0,0];
+		return 1f / (value[0,0] + epsilon2)  ;
 	}
 
 	private Vector3 partialDerivate(int axis, Transform current, Transform effector)
@@ -72,14 +73,34 @@ public class CatManipulability : MonoBehaviour{
 		}
 		default:break;
 		}
-		current.localEulerAngles = minus;
-		Vector3 posMinus = effector.position;
-		current.localEulerAngles = maxi;
-		Vector3 posMaxi = effector.position;
-		return (posMaxi - posMinus) / 2 * epsilon;
+		Vector3 val = current.localEulerAngles;
+		val.x = minus.x; val.y = minus.y; val.z = minus.z;
+		current.localEulerAngles = val;
+		Transform tmp = current;
+		while(tmp.childCount > 0)
+		{
+			tmp = tmp.GetChild(0);
+		}
+		Vector3 posMinus = new Vector3(tmp.position.x, tmp.position.y, tmp.position.z);
+		val = current.localEulerAngles;
+		val.x = maxi.x; val.y = maxi.y; val.z = maxi.z;
+		current.localEulerAngles = val;
+		tmp = current;
+		while(tmp.childCount > 0)
+		{
+			tmp = tmp.GetChild(0);
+		}
+		Vector3 posMaxi = new Vector3(tmp.position.x, tmp.position.y, tmp.position.z);
+
+		val = current.localEulerAngles;
+		val.x = lAngles.x; val.y = lAngles.y; val.z = lAngles.z;
+		current.localEulerAngles = val;
+
+		//current.eulerAngles.Set(lAngles.x, lAngles.y, lAngles.z);
+		return (posMaxi - posMinus) / (2 * epsilon);
 	}
 
-	private void ComputeJacobian(float [,] jacobian)
+	private void ComputeJacobian(float [,] jacobian, float [,] jacobianTr)
 	{
 		Transform tr = from_;
 		int col = 0;
@@ -91,6 +112,9 @@ public class CatManipulability : MonoBehaviour{
 				jacobian[0, col+i] = res.x;
 				jacobian[1, col+i] = res.y;
 				jacobian[2, col+i] = res.z;
+				jacobianTr[col+i,0] = res.x;
+				jacobianTr[col+i,1] = res.y;
+				jacobianTr[col+i,2] = res.z;
 			}
 			if(tr.childCount > 0)
         	{
