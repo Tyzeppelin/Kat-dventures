@@ -59,7 +59,7 @@ public class MurDoigts : MonoBehaviour {
 			}
 		}
 
-		// 2: 
+		// 2: Set up
 		Transform priseProche = null;
 		float bestFTR = -1000000000000;
 
@@ -67,8 +67,22 @@ public class MurDoigts : MonoBehaviour {
 		foreach (Transform p in TabPrisesProches) 
 		{
 			//3a : trouver une bonne config avec IK
+			CCD3d ccd = (CCD3d) transform.GetComponent("CCD3d");
+			Transform armStart=ccd.armStart;
+				//Création du clone
+			Transform cloneBras = (Transform) Instantiate(armStart);
+			cloneBras.renderer.enabled=false; //on le rend invisible
+				//Avec le clone, les scripts sont aussi copiés : on ne garde que celui de CCD, que l'on paramètre bien
+			Transform doigt = armStart;
+			while (doigt.childCount != 0) doigt=doigt.GetChild(0);
+			doigt.GetComponent<MurDoigts>().enabled=false;
+			doigt.GetComponent<CatManipulability>().enabled=false;
+			doigt.GetComponent<CCD3d>().target=p;
+			doigt.GetComponent<CCD3d>().enabled=true;
+				//On fait tourner l'algo de CCD
+			// TODO
 
-			//3b : 
+			//3b : calcul du FTR
 			CatManipulability script = (CatManipulability) transform.GetComponent("CatManipulability");
 			float currentFTR=script.ftr(directionDNT); 
 			if (currentFTR > bestFTR) 
