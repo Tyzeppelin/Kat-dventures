@@ -68,7 +68,7 @@ Les méthodes procédurales sont regroupées en plusieurs familles. Nous nous so
 
 \FigureEPS{h,t,b,p}{6cm}{Images/ik.eps}{Schéma d'illustration de la cinématique inverse}{fig:ik}
 
-Pour obtenir ces positions, différents algorithmes mathématiques sont disponibles : \textit{Cyclic Coordinate Descent} (CCD), \textit{Forward And Backward Reaching Inverse Kinematics} (FABRIK), l'utilisation de la matrice jacobienne, etc. Parmi tous ceux-là, nous avons choisi d'implémenter CCD, car il est plus accessible et plus économe en calcul ce qui est un point important dans un jeu vidéo, afin de garder une fluidité des mouvements correcte. Cet algorithme va calculer la position optimale d'un membre en effectuant une rotation, puis réitère ce calcul sur le membre ``parent'', et ainsi de suite.
+Pour obtenir ces positions, différents algorithmes mathématiques sont disponibles : \textit{Cyclic Coordinate Descent} (CCD), \textit{Forward And Backward Reaching Inverse Kinematics} (FABRIK), l'utilisation de la matrice jacobienne, etc. Parmi tous ceux-là, nous avons choisi d'implémenter CCD, car il est plus accessible et plus économe en calcul ce qui est un point important dans un jeu vidéo, afin de garder une fluidité des mouvements correcte. 
 
 Pour plus de détail sur l'algorithme CCD, nous vous renvoyons à la documentation technique.
 
@@ -141,7 +141,7 @@ Pour la gestion du projet, nous avons commencé à communiquer principalement pa
 \section{Idées d'amélioration}
 Le projet étant assez vaste, de nombreuses améliorations sont possibles. En plus de l'ajout d'autres niveaux, nous pourrions citer : 
 \paragraph{L'intégration d'un timer avec des objectifs de scoring :} une échelle de score pourrait être ajouté, en tenant compte du temps passé sur chaque niveau.
-\paragraph{Ajout de puzzles à utiliser avec une WiiMote :} un puzzle rapide pourrait finir le niveau. Nous pourrions diriger une patte avant du chat, qui devrait suivre un pointeur laser pour qu'il appuie sur différents boutons. Des puzzles variés peuvent être considérés : taquin, \textit{block breaker}, etc.
+\paragraph{Ajout de puzzles à utiliser avec une WiiMote :} un puzzle rapide pourrait finir le niveau. Nous pourrions diriger une patte avant du chat, qui devrait suivre un pointeur laser pour qu'il appuie sur différents boutons. Des puzzles variés peuvent être considérés : taquin, \textit{block breaker}, etc. % REVOIR ET ECLAICIR LE PROPOS %
 \paragraph{Permettre d'autres mouvements au chat :} l'élargissement des possibilités des mouvements du chat permettrait la création de nouveaux obstacles (des tuyaux à grimper ou des sauts de l'ange par exemple).
 \paragraph{Améliorer les graphismes :} le réalisme et le rendu des textures peuvent être perfectionnés.
 \\
