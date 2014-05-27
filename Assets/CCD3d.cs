@@ -58,7 +58,7 @@ public class CCD3d : MonoBehaviour {
 	/// \param joint the current joint that will be rotated towards the target.
 	/// \param effector the end effector transform.
 	/// \param target the transform containing the position we want the end-effector to reach.
-	private void CCDStep3D(Transform joint, Transform effector, Transform target)
+	public void CCDStep3D(Transform joint, Transform effector, Transform target)
 	{
 		Vector3 qipe = new Vector3 (effector.position.x - joint.position.x, effector.position.y - joint.position.y, effector.position.z - joint.position.z);
 		Vector3 qipt = new Vector3 (target.position.x - joint.position.x, target.position.y - joint.position.y, target.position.z - joint.position.z);

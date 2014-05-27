@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CatManipulability : MonoBehaviour{
+public class CatManipulability{ //Virer monobehaviour
 	private const float epsilon = 0.001f;
 	private Transform from_;
 	private Transform effector_;
 	private int dim;
 	// Use this for initialization
-	public CatManipulability (Transform from) {
-		this.from_ = from;
+	public CatManipulability () {
+		/*this.from_ = from;
 		// count number of elements
 		dim = 0;
 		Transform temp = from; // assumes simple trees
@@ -18,10 +18,10 @@ public class CatManipulability : MonoBehaviour{
 			temp = temp.GetChild(0);
 		}
 		dim = dim * 3;
-		effector_ = temp;
+		effector_ = temp;*/
 	}
 	
-	public float ftr(Vector3 direction)
+	public float ftr(Vector3 direction, Transform from)
 	{
 		float [,] jacobian = new float[3,dim];		
 		float [,] jacobianTr = new float[dim,3];	

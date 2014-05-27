@@ -9,8 +9,10 @@ public class MurDoigts : MonoBehaviour {
 	public int epsilonDoigtPrise; //Correspond à la distance limite entre les doigts et la prise
 	public int epsilonEpaulePrise; //Correspond à la distance minimale entre l'épaule et la prise (TECCC)
 	public Vector3 directionDNT; //Direction voulue par le joueur
+	private CatManipulability catm;
 
 	Transform priseEnCours;
+	GameObject clone;
 
 
 	// Use this for initialization
@@ -18,6 +20,13 @@ public class MurDoigts : MonoBehaviour {
 		priseEnCours = PriseDeDebut;
 		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
 		test.target=PriseDeDebut;
+		//clone = (Transform)Instantiate (GetComponent<CCD3d> ().armStart);
+		GameObject clone = new GameObject ();
+		clone.transform.position = GetComponent<CCD3d> ().armStart.position;
+		clone.transform.rotation = GetComponent<CCD3d> ().armStart.rotation;
+		clone.AddComponent ("CCD3d");
+
+		catm = new CatManipulability ();
 	}
 	
 	// Update is called once per frame
@@ -63,28 +72,27 @@ public class MurDoigts : MonoBehaviour {
 		Transform priseProche = null;
 		float bestFTR = -1000000000000;
 
+
 		//3: 
 		foreach (Transform p in TabPrisesProches) 
 		{
 			//3a : trouver une bonne config avec IK
-			CCD3d ccd = (CCD3d) transform.GetComponent("CCD3d");
-			Transform armStart=ccd.armStart;
-				//Création du clone
-			Transform cloneBras = (Transform) Instantiate(armStart);
-			cloneBras.renderer.enabled=false; //on le rend invisible
 				//Avec le clone, les scripts sont aussi copiés : on ne garde que celui de CCD, que l'on paramètre bien
-			Transform doigt = armStart;
+			Transform doigt = clone.transform; //Desactiver les scripts sur les clones ! 
 			while (doigt.childCount != 0) doigt=doigt.GetChild(0);
-			doigt.GetComponent<MurDoigts>().enabled=false;
-			doigt.GetComponent<CatManipulability>().enabled=false;
+			Debug.Log(doigt);
 			doigt.GetComponent<CCD3d>().target=p;
 			doigt.GetComponent<CCD3d>().enabled=true;
 				//On fait tourner l'algo de CCD
-			// TODO
+			int i = 0;
+			while ((Vector3.Distance(doigt.position,p.position) > epsilonDoigtPrise) && i<10) {
+				Debug.Log("CCD3dStep");
+				GetComponent<CCD3d>().CCDStep3D(doigt,doigt,p);
+				i++;
+			}
 
 			//3b : calcul du FTR
-			CatManipulability script = (CatManipulability) transform.GetComponent("CatManipulability");
-			float currentFTR=script.ftr(directionDNT); 
+			float currentFTR = catm.ftr(directionDNT,doigt); //TODO verif si c'est le bon transform 
 			if (currentFTR > bestFTR) 
 			{
 				bestFTR=currentFTR;
@@ -94,3 +102,4 @@ public class MurDoigts : MonoBehaviour {
 		return priseProche;
 	}
 }
+
