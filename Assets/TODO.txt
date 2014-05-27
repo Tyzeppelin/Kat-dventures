@@ -1,4 +1,0 @@
-TODO
-Contraintes articulaires : avant droite (set)
-							arrière droite & gauche (script & init & set)
-
