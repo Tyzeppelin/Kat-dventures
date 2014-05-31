@@ -27,4 +27,8 @@ Build/*
 # http://stackoverflow.com/questions/1...ops-pidb-files
 *.pidb
 *.userprefs
+<<<<<<< HEAD
 *.meta
+=======
+*.meta
+>>>>>>> pousseCaisse
