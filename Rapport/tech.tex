@@ -14,6 +14,7 @@
                            % décommenter cette commande (double interligne) 
                            
 % UTILISEZ SPELL (correcteur orthographique) à accès simplifié depuis XEmacs
+\usepackage{graphicx}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -62,22 +63,45 @@ Point de départ : l'articulation la plus proche de l'effecteur ($q_{n-1}$).
 \end{itemize}
 \end{itemize}
 
+La figure \ref{ccd} montre un exemple d'application de l'algorithme.
+
+\begin{figure}[htbp]
+	$$
+	\includegraphics[scale=0.6]{Images/CCDALL.eps}
+	$$
+	\caption{Application de l'algorithme CCD}
+	\label{ccd}
+\end{figure}
+
+
 \section{Passage d'un mode à l’autre}
-Le choix de passage d'un mode à l'autre est dicté par la pression d'une touche par le joueur. À ce moment-là, le script <INSERER> s'active, et procède au redressement du chat, de telle sorte qu'il soit dans une posture humaine. 
+Le choix de passage d'un mode à l'autre est dicté par la pression d'une touche par le joueur. À ce moment-là, le script \texttt{StandUp.cs} s'active, et procède au redressement du chat, de telle sorte qu'il soit dans une posture humaine. 
 
 \section{Mouvements en mode super-pouvoirs}
-Pour faire bouger le chat en position debout, nous nous sommes appuyés sur la bibliothèque \textit{Locomotion System} développé par Rune Skovbo Johansen. Cet ensemble de scripts utilise la cinématique inverse pour obtenir un mouvement réaliste et similaire à celui d'un humain.
+Pour faire bouger le chat en position debout, nous nous sommes appuyés sur la bibliothèque \textit{Locomotion System} développé par Rune Skovbo Johansen\footnote{Le package \textit{Locomotion System} est disponible sur le Unity Asset Store : \textit{https://www.assetstore.unity3d.com/en/\#!/content/7135}}. Cet ensemble de scripts utilise la cinématique inverse pour obtenir un mouvement réaliste et similaire à celui d'un humain.
 
 \section{Choix des prises}
-Nous utilisons la méthode de notre encadrant, implémenté ici sous le nom de \texttt{CatManipulatibility.cs}.
-<insérer algo >
+Nous utilisons la méthode de notre encadrant, implémenté ici sous le nom de \texttt{CatManipulatibility.cs}. Nous avons utilisé ce script comme une boîte noire, car nous l'avons reçu tard dans le projet, et notre encadrant a considéré que son implémentation serait trop prenante. Il est à noter que la méthode complète permet d'obtenir une configuration complète (c'est-à-dire la cible et les positions/rotations des articulations), mais nous nous en servons que pour trouver la cible adéquate. 
+
+La fonction qui nous intéresse est \texttt{ftr}, qui prend en paramètre un \texttt{Transform} et la direction que nous voulons donner au chat, et renvoie un indicateur de "réalisme" de la configuration. Cela nous permet de trouver la meilleure prise. Ensuite, les déplacements des articulations sont effectués par les opérations de \texttt{CCD3d.cs}. 
+
+L'algorithme utilisé est le suivant : 
+\begin{enumerate}
+\item On choisit les prises à proximité (écart d'un $\epsilon$ défini)
+\item Pour chaque prise $p$ : 
+\begin{enumerate}
+\item On crée un clone du membre, et on lui fait décrire l'algorithme CCD pour qu'il trouve une configuration
+\item On appelle la fonction \texttt{ftr} du script \texttt{CatManipulability} avec la direction voulue de l'utilisateur. 
+\item Si la valeur renvoyée par \texttt{ftr} est plus grande que pour la prise d'avant, on retient la prise comme étant la meilleure.
+\end{enumerate}
+\end{enumerate}
+
 
 \section{Intégration des scènes}
 Notre mode de développement consistait en la création d’une scène par partie de parcours. Ainsi le mur d’escalade ou encore le cube ont été fait chacun dans une scène différente. 
 
 \section{Menu et Interface Utilisateur}
 
-\bibliography{biblio}
 
 
 \end{document}
