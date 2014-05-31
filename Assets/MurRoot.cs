@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// \class MurRoot
+/// A COMPLETER
 public class MurRoot : MonoBehaviour {
 
 	public Transform mur;

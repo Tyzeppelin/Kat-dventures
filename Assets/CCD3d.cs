@@ -9,22 +9,20 @@ public class InfoMembre {
 	public Vector3 anglesEulerMax;
 }
 
+
+/// \class CCD3d
+/// Script pour appliquer la cinématique inverse sur un squelette, prend en compte les butées articulaires.
 [System.Serializable]
 public class CCD3d : MonoBehaviour {
 	#region script_parameters	
 	// the target we want the end-effector to reach
 	// In our case the cube
+	/// cible à atteindre
 	public Transform target;
+	/// début du squelette
 	public Transform armStart;
 	public Transform displayEuler;
-	/*public Transform membre1;
-	public Vector3 angles1;
-	public Transform membre2;
-	public Vector3 angles2;
-	public Transform membre3;
-	public Vector3 angles3;
-	public Transform membre4;
-	public Vector3 angles4;*/
+	/// tableau des membres du squelettes avec leurs angles de rotation minimum et maximum sur x,y,z
 	public InfoMembre[] tabMembre;
 	#endregion script_parameters
 		

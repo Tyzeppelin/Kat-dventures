@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// \class BoxMove
+/// Script pour déplacer un objet lorsqu'il est poussé. 
+/// A chaque frame, on teste si la distance entre les pattes du chat et l'objet à pousser est inférieure à un epsilon petit. Si oui on applique une force sur l'objet.
 public class BoxMove : MonoBehaviour {
-	public bool moving = false;
+	/// patte gauche du chat
 	public Transform patteGauche;
+	/// patte droite du chat
 	public Transform patteDroite;
+	/// epsilon 
 	public float e;
 	// Use this for initialization
 	void Start () {

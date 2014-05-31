@@ -1,0 +1,87 @@
+\hypertarget{class_c_c_d3d}{\section{Référence de la classe C\+C\+D3d}
+\label{class_c_c_d3d}\index{C\+C\+D3d@{C\+C\+D3d}}
+}
+
+
+Est dérivée de Mono\+Behaviour.
+
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_c_d3d_a8a24b37582e07ee23646b165d54fa600}{Transform \hyperlink{class_c_c_d3d_a8a24b37582e07ee23646b165d54fa600}{target}}\label{class_c_c_d3d_a8a24b37582e07ee23646b165d54fa600}
+
+\begin{DoxyCompactList}\small\item\em cible à atteindre \end{DoxyCompactList}\item 
+\hypertarget{class_c_c_d3d_a2eead529af518997fa586c6a009cfa77}{Transform \hyperlink{class_c_c_d3d_a2eead529af518997fa586c6a009cfa77}{arm\+Start}}\label{class_c_c_d3d_a2eead529af518997fa586c6a009cfa77}
+
+\begin{DoxyCompactList}\small\item\em début du squelette \end{DoxyCompactList}\item 
+\hypertarget{class_c_c_d3d_a122c5917b76f173bf2d412149c2e93c5}{Info\+Membre\mbox{[}$\,$\mbox{]} \hyperlink{class_c_c_d3d_a122c5917b76f173bf2d412149c2e93c5}{tab\+Membre}}\label{class_c_c_d3d_a122c5917b76f173bf2d412149c2e93c5}
+
+\begin{DoxyCompactList}\small\item\em tableau des membres du squelettes avec leurs angles de rotation minimum et maximum sur x,y,z \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{class_c_c_d3d_a921e61de2ab1ce035bd7ebf1d7e7e1a1}{Compute\+Angle3\+D} (Vector3 a, Vector3 b)
+\begin{DoxyCompactList}\small\item\em method for computing an angle value between two 3d vectors using their dot product. \end{DoxyCompactList}\item 
+void \hyperlink{class_c_c_d3d_a683157309588f0981bd0c6387260f9ca}{C\+C\+D\+Step3\+D} (Transform joint, Transform effector, Transform \hyperlink{class_c_c_d3d_a8a24b37582e07ee23646b165d54fa600}{target})
+\begin{DoxyCompactList}\small\item\em performs one step of the C\+C\+D algorithm in 3d. For each joint in the kinematic chain, we compute the angle theta = (effector.\+joint.\+target). We then compute the axis u = \mbox{[}target-\/joint\mbox{]} $^\wedge$ \mbox{[}effector-\/joint\mbox{]} and apply the rotation theta around this axis to drive the effector towards the target.\+The method is recursive and calls itself by going up the joint hierarchy. \end{DoxyCompactList}\item 
+void \hyperlink{class_c_c_d3d_a9b67671b0dc9adb1577328732185447a}{verif\+Angles} (Transform joint)
+\begin{DoxyCompactList}\small\item\em allows to check if angles are ok according to values setted up in Inspector In the case that the angles are not correct, their values are imposed \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Script pour appliquer la cinématique inverse sur un squelette, prend en compte les butées articulaires. 
+
+\subsection{Documentation des fonctions membres}
+\hypertarget{class_c_c_d3d_a683157309588f0981bd0c6387260f9ca}{\index{C\+C\+D3d@{C\+C\+D3d}!C\+C\+D\+Step3\+D@{C\+C\+D\+Step3\+D}}
+\index{C\+C\+D\+Step3\+D@{C\+C\+D\+Step3\+D}!C\+C\+D3d@{C\+C\+D3d}}
+\subsubsection[{C\+C\+D\+Step3\+D}]{\setlength{\rightskip}{0pt plus 5cm}void C\+C\+D\+Step3\+D (
+\begin{DoxyParamCaption}
+\item[{Transform}]{joint, }
+\item[{Transform}]{effector, }
+\item[{Transform}]{target}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_c_c_d3d_a683157309588f0981bd0c6387260f9ca}
+
+
+performs one step of the C\+C\+D algorithm in 3d. For each joint in the kinematic chain, we compute the angle theta = (effector.\+joint.\+target). We then compute the axis u = \mbox{[}target-\/joint\mbox{]} $^\wedge$ \mbox{[}effector-\/joint\mbox{]} and apply the rotation theta around this axis to drive the effector towards the target.\+The method is recursive and calls itself by going up the joint hierarchy. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joint} & the current joint that will be rotated towards the target. \\
+\hline
+{\em effector} & the end effector transform. \\
+\hline
+{\em target} & the transform containing the position we want the end-\/effector to reach. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_c_c_d3d_a921e61de2ab1ce035bd7ebf1d7e7e1a1}{\index{C\+C\+D3d@{C\+C\+D3d}!Compute\+Angle3\+D@{Compute\+Angle3\+D}}
+\index{Compute\+Angle3\+D@{Compute\+Angle3\+D}!C\+C\+D3d@{C\+C\+D3d}}
+\subsubsection[{Compute\+Angle3\+D}]{\setlength{\rightskip}{0pt plus 5cm}float Compute\+Angle3\+D (
+\begin{DoxyParamCaption}
+\item[{Vector3}]{a, }
+\item[{Vector3}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_c_c_d3d_a921e61de2ab1ce035bd7ebf1d7e7e1a1}
+
+
+method for computing an angle value between two 3d vectors using their dot product. 
+
+\begin{DoxyReturn}{Renvoie}
+the value of the angle existing between a and b. 
+\end{DoxyReturn}
+\hypertarget{class_c_c_d3d_a9b67671b0dc9adb1577328732185447a}{\index{C\+C\+D3d@{C\+C\+D3d}!verif\+Angles@{verif\+Angles}}
+\index{verif\+Angles@{verif\+Angles}!C\+C\+D3d@{C\+C\+D3d}}
+\subsubsection[{verif\+Angles}]{\setlength{\rightskip}{0pt plus 5cm}void verif\+Angles (
+\begin{DoxyParamCaption}
+\item[{Transform}]{joint}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_c_c_d3d_a9b67671b0dc9adb1577328732185447a}
+
+
+allows to check if angles are ok according to values setted up in Inspector In the case that the angles are not correct, their values are imposed 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joint} & the joint for which angles have to be checked \\
+\hline
+\end{DoxyParams}

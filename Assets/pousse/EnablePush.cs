@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// \class EnablePush
+/// Script pour passer le chat en mode poussée ou en mode marche en appuyant sur la touche P.
 public class EnablePush : MonoBehaviour {
+	/// vrai si le chat est en mode poussée, faux sinon
 	private bool isPushing = false;
 
 	// Use this for initialization

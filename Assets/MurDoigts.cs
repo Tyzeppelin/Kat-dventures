@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// \class MurDoigts
+/// A COMPLETER
 public class MurDoigts : MonoBehaviour {
 
 	public Transform[] TableauDePrises;
