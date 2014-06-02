@@ -5,15 +5,29 @@
 
 Est dérivée de Mono\+Behaviour.
 
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_mur_root_aaafa455395ac8213a7c3ae1f45b8e298}{int \hyperlink{class_mur_root_aaafa455395ac8213a7c3ae1f45b8e298}{distance\+Minimale}}\label{class_mur_root_aaafa455395ac8213a7c3ae1f45b8e298}
+
+\begin{DoxyCompactList}\small\item\em le mur d'escalade \end{DoxyCompactList}\item 
+\hypertarget{class_mur_root_a54fd5da637c72c9e6245da883c6bb30d}{Transform\mbox{[}$\,$\mbox{]} \hyperlink{class_mur_root_a54fd5da637c72c9e6245da883c6bb30d}{tab\+Doigts}}\label{class_mur_root_a54fd5da637c72c9e6245da883c6bb30d}
+
+\begin{DoxyCompactList}\small\item\em la distance minimale pour que le chat s'aggripe au mur \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Fonctions membres privées}
 \begin{DoxyCompactItemize}
 \item 
+\hypertarget{class_mur_root_a07aaf1227e4d645f15e0a964f54ef291}{void \hyperlink{class_mur_root_a07aaf1227e4d645f15e0a964f54ef291}{Start} ()}\label{class_mur_root_a07aaf1227e4d645f15e0a964f54ef291}
+
+\begin{DoxyCompactList}\small\item\em tableau des doigts du chat \end{DoxyCompactList}\item 
 void \hyperlink{class_mur_root_aeb3f75fbf6cdfff7f51ebae7d866b1b2}{activate\+Script} (bool b)
-\begin{DoxyCompactList}\small\item\em Activates the script for the 4 members of the cat \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Active ou désactive le script Mur\+Doigt pour les 4 membres du chat. \end{DoxyCompactList}\item 
+void \hyperlink{class_mur_root_a63b61ca97eceef0753c192eabfd41521}{passage\+Dir} (Vector3 dir)
+\begin{DoxyCompactList}\small\item\em Envoie la direction du mouvement voulu aux scripts Mur\+Doigt (dans la variable direction\+D\+N\+T) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
-A C\+O\+M\+P\+L\+E\+T\+E\+R 
+Script appliqué à la racine du chat \+: gestion des directions voulues par le joueur sur le mur. 
 
 \subsection{Documentation des fonctions membres}
 \hypertarget{class_mur_root_aeb3f75fbf6cdfff7f51ebae7d866b1b2}{\index{Mur\+Root@{Mur\+Root}!activate\+Script@{activate\+Script}}
@@ -25,10 +39,26 @@ A C\+O\+M\+P\+L\+E\+T\+E\+R
 )\hspace{0.3cm}{\ttfamily [private]}}}\label{class_mur_root_aeb3f75fbf6cdfff7f51ebae7d866b1b2}
 
 
-Activates the script for the 4 members of the cat 
+Active ou désactive le script Mur\+Doigt pour les 4 membres du chat. 
 
 
 \begin{DoxyParams}{Paramètres}
-{\em b} & If set to {\ttfamily true} b.\\
+{\em b} & état d'activation des scripts Mur\+Doigt des membres \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_mur_root_a63b61ca97eceef0753c192eabfd41521}{\index{Mur\+Root@{Mur\+Root}!passage\+Dir@{passage\+Dir}}
+\index{passage\+Dir@{passage\+Dir}!Mur\+Root@{Mur\+Root}}
+\subsubsection[{passage\+Dir}]{\setlength{\rightskip}{0pt plus 5cm}void passage\+Dir (
+\begin{DoxyParamCaption}
+\item[{Vector3}]{dir}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_mur_root_a63b61ca97eceef0753c192eabfd41521}
+
+
+Envoie la direction du mouvement voulu aux scripts Mur\+Doigt (dans la variable direction\+D\+N\+T) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em dir} & la direction voulue par le joueur \\
 \hline
 \end{DoxyParams}

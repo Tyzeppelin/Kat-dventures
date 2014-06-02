@@ -5,6 +5,11 @@
 
 Est dérivée de Mono\+Behaviour.
 
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_c_c_d3d_a683157309588f0981bd0c6387260f9ca}{C\+C\+D\+Step3\+D} (Transform joint, Transform effector, Transform \hyperlink{class_c_c_d3d_a8a24b37582e07ee23646b165d54fa600}{target})
+\begin{DoxyCompactList}\small\item\em performs one step of the C\+C\+D algorithm in 3d. For each joint in the kinematic chain, we compute the angle theta = (effector.\+joint.\+target). We then compute the axis u = \mbox{[}target-\/joint\mbox{]} $^\wedge$ \mbox{[}effector-\/joint\mbox{]} and apply the rotation theta around this axis to drive the effector towards the target.\+The method is recursive and calls itself by going up the joint hierarchy. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Attributs publics}
 \begin{DoxyCompactItemize}
 \item 
@@ -22,8 +27,6 @@ Est dérivée de Mono\+Behaviour.
 \item 
 float \hyperlink{class_c_c_d3d_a921e61de2ab1ce035bd7ebf1d7e7e1a1}{Compute\+Angle3\+D} (Vector3 a, Vector3 b)
 \begin{DoxyCompactList}\small\item\em method for computing an angle value between two 3d vectors using their dot product. \end{DoxyCompactList}\item 
-void \hyperlink{class_c_c_d3d_a683157309588f0981bd0c6387260f9ca}{C\+C\+D\+Step3\+D} (Transform joint, Transform effector, Transform \hyperlink{class_c_c_d3d_a8a24b37582e07ee23646b165d54fa600}{target})
-\begin{DoxyCompactList}\small\item\em performs one step of the C\+C\+D algorithm in 3d. For each joint in the kinematic chain, we compute the angle theta = (effector.\+joint.\+target). We then compute the axis u = \mbox{[}target-\/joint\mbox{]} $^\wedge$ \mbox{[}effector-\/joint\mbox{]} and apply the rotation theta around this axis to drive the effector towards the target.\+The method is recursive and calls itself by going up the joint hierarchy. \end{DoxyCompactList}\item 
 void \hyperlink{class_c_c_d3d_a9b67671b0dc9adb1577328732185447a}{verif\+Angles} (Transform joint)
 \begin{DoxyCompactList}\small\item\em allows to check if angles are ok according to values setted up in Inspector In the case that the angles are not correct, their values are imposed \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -40,7 +43,7 @@ Script pour appliquer la cinématique inverse sur un squelette, prend en compte 
 \item[{Transform}]{effector, }
 \item[{Transform}]{target}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_c_c_d3d_a683157309588f0981bd0c6387260f9ca}
+)}}\label{class_c_c_d3d_a683157309588f0981bd0c6387260f9ca}
 
 
 performs one step of the C\+C\+D algorithm in 3d. For each joint in the kinematic chain, we compute the angle theta = (effector.\+joint.\+target). We then compute the axis u = \mbox{[}target-\/joint\mbox{]} $^\wedge$ \mbox{[}effector-\/joint\mbox{]} and apply the rotation theta around this axis to drive the effector towards the target.\+The method is recursive and calls itself by going up the joint hierarchy. 

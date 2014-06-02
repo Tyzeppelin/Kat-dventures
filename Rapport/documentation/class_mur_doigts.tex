@@ -5,15 +5,42 @@
 
 Est dérivée de Mono\+Behaviour.
 
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_mur_doigts_a7f94295d54885a3785208e284d1e5e3a}{Transform \hyperlink{class_mur_doigts_a7f94295d54885a3785208e284d1e5e3a}{Debut\+Membre}}\label{class_mur_doigts_a7f94295d54885a3785208e284d1e5e3a}
+
+\begin{DoxyCompactList}\small\item\em Toutes les prises du mur. \end{DoxyCompactList}\item 
+\hypertarget{class_mur_doigts_a67297b6f946f726dd71d1e51d4674fc0}{Transform \hyperlink{class_mur_doigts_a67297b6f946f726dd71d1e51d4674fc0}{Prise\+De\+Debut}}\label{class_mur_doigts_a67297b6f946f726dd71d1e51d4674fc0}
+
+\begin{DoxyCompactList}\small\item\em Racine du membre (en général épaule) \end{DoxyCompactList}\item 
+\hypertarget{class_mur_doigts_ae0827a5b49b2c8ddede143d20cf2af79}{int \hyperlink{class_mur_doigts_ae0827a5b49b2c8ddede143d20cf2af79}{epsilon\+Doigt\+Prise}}\label{class_mur_doigts_ae0827a5b49b2c8ddede143d20cf2af79}
+
+\begin{DoxyCompactList}\small\item\em Prise à la première frame. \end{DoxyCompactList}\item 
+\hypertarget{class_mur_doigts_a9ea35a29cde1c6a448fb73321ce54779}{int \hyperlink{class_mur_doigts_a9ea35a29cde1c6a448fb73321ce54779}{epsilon\+Epaule\+Prise}}\label{class_mur_doigts_a9ea35a29cde1c6a448fb73321ce54779}
+
+\begin{DoxyCompactList}\small\item\em Correspond à la distance limite entre les doigts et la prise. \end{DoxyCompactList}\item 
+\hypertarget{class_mur_doigts_a223a9ef7a4f95aed51a2e87f809bad71}{Vector3 \hyperlink{class_mur_doigts_a223a9ef7a4f95aed51a2e87f809bad71}{direction\+D\+N\+T}}\label{class_mur_doigts_a223a9ef7a4f95aed51a2e87f809bad71}
+
+\begin{DoxyCompactList}\small\item\em Correspond à la distance minimale entre l'épaule et la prise (T\+E\+C\+C\+C) \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Fonctions membres privées}
 \begin{DoxyCompactItemize}
 \item 
 Transform \hyperlink{class_mur_doigts_a57b29fe3459f0ea5d0ec022b269509ae}{get\+Prise} ()
-\begin{DoxyCompactList}\small\item\em Method to get the best target to reach ; T\+E\+C\+C\+C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Méthode pour obtenir la meilleure prise ; application de l'algorithme pour T\+E\+C\+C\+C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_mur_doigts_ae22395dd7e5144bb5f660b59964efd48}{\hyperlink{class_cat_manipulability}{Cat\+Manipulability} \hyperlink{class_mur_doigts_ae22395dd7e5144bb5f660b59964efd48}{catm}}\label{class_mur_doigts_ae22395dd7e5144bb5f660b59964efd48}
+
+\begin{DoxyCompactList}\small\item\em Direction voulue par le joueur. \end{DoxyCompactList}\item 
+\hypertarget{class_mur_doigts_aff787597b5a25e211db8b2314b34079f}{Transform \hyperlink{class_mur_doigts_aff787597b5a25e211db8b2314b34079f}{prise\+En\+Cours}}\label{class_mur_doigts_aff787597b5a25e211db8b2314b34079f}
+
+\begin{DoxyCompactList}\small\item\em L'objet \hyperlink{class_cat_manipulability}{Cat\+Manipulability} pour accéder aux méthodes de calcul. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
-A C\+O\+M\+P\+L\+E\+T\+E\+R 
+Script s'appliquant aux doigts du chat 
 
 \subsection{Documentation des fonctions membres}
 \hypertarget{class_mur_doigts_a57b29fe3459f0ea5d0ec022b269509ae}{\index{Mur\+Doigts@{Mur\+Doigts}!get\+Prise@{get\+Prise}}
@@ -25,8 +52,8 @@ A C\+O\+M\+P\+L\+E\+T\+E\+R
 )\hspace{0.3cm}{\ttfamily [private]}}}\label{class_mur_doigts_a57b29fe3459f0ea5d0ec022b269509ae}
 
 
-Method to get the best target to reach ; T\+E\+C\+C\+C. 
+Méthode pour obtenir la meilleure prise ; application de l'algorithme pour T\+E\+C\+C\+C. 
 
 \begin{DoxyReturn}{Renvoie}
-The prise 
+la meilleure prise selon T\+E\+C\+C\+C 
 \end{DoxyReturn}
