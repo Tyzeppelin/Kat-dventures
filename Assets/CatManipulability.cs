@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// \class CatManipulability
+/// Classe de calcul pour la meilleure position pour le choix des prises
+
+
 public class CatManipulability{
 	private const float epsilon = 0.001f;
 	private Transform from_;
@@ -21,6 +25,10 @@ public class CatManipulability{
 		effector_ = temp;*/
 	}
 	
+	/// \brief Méthode de calcul pour trouver la meilleure prise.
+	/// \param direction la direction voulue par le joueur (vers le haut, le bas,...)
+	/// \param from la Transform sur laquelle le calcul va se faire
+	/// \return une valeur de comparaison exprimant si la prise est un bon choix.
 	public float ftr(Vector3 direction, Transform from)
 	{
 		float [,] jacobian = new float[3,dim];		
