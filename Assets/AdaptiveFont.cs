@@ -7,7 +7,7 @@ public class AdaptiveFont : MonoBehaviour {
 	private int s_size_idle;
 	/// la taille de la police lorsque le bouton est survolé par la souris
 	private int s_size_active;
-	/// l'identificateur du niveau a charger au clic
+	/// l'identificateur du niveau à charger au clic
 	public string levelName;
 	/// la largeur actuelle de la fenêtre
 	private int screenRes;
