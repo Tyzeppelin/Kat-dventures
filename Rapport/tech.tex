@@ -40,7 +40,7 @@
 Dans le mode normal, nous utilisons des animations créées avec le logiciel Blender. Vu que le sol est plat, le mouvement reste réaliste. Les animations concernées sont : l’attente, la marche et le saut. 
 
 \section{Cinématique inverse}
-L’algorithme de cinématique inverse CCD a été implémenté dans le jeu sous la forme du script \texttt{CCD3d.cs}.
+L'algorithme de cinématique inverse CCD a été implémenté dans le jeu sous la forme du script \texttt{CCD3d.cs}.
 \paragraph{Description de l'algorithme CCD} 
 \subparagraph{Nomenclature}
 \begin{itemize}
@@ -49,13 +49,16 @@ L’algorithme de cinématique inverse CCD a été implémenté dans le jeu sous
 \item $p_t$ est la position de la cible à atteindre par l'effecteur. 
 \end{itemize} 
 
-\subparagraph{Déroulement de l'agorithme}
-Point de départ : l'articulation la plus proche de l'effecteur ($q_{n-1}$).
+\subparagraph{Déroulement de l'algorithme}
 
+
+\begin{flushleft}
+Point de départ : l'articulation la plus proche de l'effecteur ($q_{n-1}$).
+\end{flushleft}
 \begin{itemize}
 \item On calcule $\alpha$ l'angle formé entre les deux vecteurs $\vec{q_i p_e}$ et $\vec{q_i p_t}$
 \item On fait une rotation de centre $p_i$ et d'angle $\alpha$ autour de l'axe $\vec{q_i p_e}\land\vec{q_i p_t}$, ce qui permet d'aligner $\vec{q_i p_e}$ et $\vec{q_i p_t}$
-\item Si la distance entre l'effecteur et la cible (c'est-à-dire $||\vec{p_e p_t}||$)devient plus petite à un nombre $\epsilon$ fixé, l'objectif est atteint. 
+\item Si la distance entre l'effecteur et la cible (c'est-à-dire $||\vec{p_e p_t}||$) devient plus petite par rapport à un nombre $\epsilon$ fixé, l'objectif est atteint. 
 \item Dans le cas contraire, deux choix : 
 \begin{itemize}
 \item Si on n'est pas arrivé à la racine du membre ($i>0$), on itère une autre fois avec l'articulation $q_{i-1}$.
@@ -75,7 +78,7 @@ La figure \ref{ccd} montre un exemple d'application de l'algorithme.
 
 
 \section{Passage d'un mode à l’autre}
-Le choix de passage d'un mode à l'autre est dicté par la pression d'une touche par le joueur. À ce moment-là, le script \texttt{StandUp.cs} s'active, et procède au redressement du chat, de telle sorte qu'il soit dans une posture humaine. 
+Le choix de passage d'un mode à l'autre est dicté par la pression d'une touche par le joueur. À ce moment-là, le script \texttt{EnablePush.cs} s'active, et procède au redressement du chat, de telle sorte qu'il soit dans une posture humaine. 
 
 \section{Mouvements en mode super-pouvoirs}
 Pour faire bouger le chat en position debout, nous nous sommes appuyés sur la bibliothèque \textit{Locomotion System} développé par Rune Skovbo Johansen\footnote{Le package \textit{Locomotion System} est disponible sur le Unity Asset Store : \textit{https://www.assetstore.unity3d.com/en/\#!/content/7135}}. Cet ensemble de scripts utilise la cinématique inverse pour obtenir un mouvement réaliste et similaire à celui d'un humain.

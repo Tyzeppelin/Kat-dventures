@@ -46,8 +46,9 @@ Ce rapport présente le déploiement de notre projet d'études pratiques. L'obje
 
 \section{Introduction}  
 
-Les problématiques d'animation dans les milieux du jeu vidéo et du dessin animé sont des enjeux importants, car extrêmement perceptibles. En effet, dans la plupart des grands projets de ce type, c'est une armée d'artistes et de techniciens qui {\oe}uvrent afin de créer des mouvements toujours plus réalistes. \\
-Cependant, malgré l'évolution constante dans ce domaine et le niveau de qualité atteint aujourd'hui, les techniques d'animation actuelles demeurent insatisfaisantes. Par exemple, certaines configurations de l'environnement peuvent prendre en défaut l'animation créée, comme par exemple le déplacement d'un objet que prend le héros d'un jeu vidéo (voir fig.\ref{fig:spygame}), ou bien la modification d'une scène dans la création d'un film d'animation. Autant de situations qui complexifient la création de médias.\\   
+Les problématiques d'animation dans les milieux du jeu vidéo et du dessin animé sont des enjeux importants, car extrêmement perceptibles. En effet, dans la plupart des grands projets de ce type, c'est une armée d'artistes et de techniciens qui {\oe}uvrent afin de créer des mouvements toujours plus réalistes.
+
+Cependant, malgré l'évolution constante dans ce domaine et le niveau de qualité atteint aujourd'hui, les techniques d'animation actuelles demeurent insatisfaisantes. Par exemple, certaines configurations de l'environnement peuvent prendre en défaut l'animation créée, comme le déplacement d'un objet que prend le héros d'un jeu vidéo (voir fig.\ref{fig:spygame}), ou bien la modification d'une scène dans la création d'un film d'animation. Autant de situations qui complexifient la création de médias.\\   
 \FigureEPS{h,t,b,p}{7cm}{Images/spygame.eps}{Lorsque l'environnement change, le mouvement n'est pas toujours adapté.}{fig:spygame} 
 Parmi les pistes proposées pour résoudre cette problématique, l'animation procédurale fait partie des solutions les plus intéressantes, et c'est ce que nous avons implémenté dans un jeu vidéo, nommé \og Kat'dventures \fg{}  . Nous reviendrons sur l'animation procédurale dans une première partie, avant d'expliquer le gameplay du jeu. Nous évoquerons les technologies utilisées pour créer le jeu en lui-même, puis nous reviendrons brièvement sur l'exécution du projet.
 
@@ -59,6 +60,7 @@ Parmi les techniques d'animation nous retrouvons deux méthodes principales pour
 	\item L'animation procédurale que nous allons développer plus bas.
 	\item La \textit{Motion Capture}, qui consiste en la création du mouvement par des cascadeurs munis de capteurs. 
 \end{itemize}
+
 Mais pourquoi utiliser des techniques d'animation procédurale, plutôt que la \textit{Motion Capture} ? En réalité, la \textit{Motion Capture}, même si elle permet d'obtenir des mouvements réalistes, car obtenus directement depuis l'homme, pose le problème de la réutilisation des mouvements. En effet, un mouvement issu de \textit{Motion Capture} est contextuel à un environnement spécifique, et ne peut donc pas être transposé à un autre environnement.
 
 Dans notre cas, nous allons travailler sur les techniques d'animation procédurale. Ce mouvement sera issu d'algorithmes mathématiques, et devra également respecter les contraintes inspirées du monde réel (gravité, limites articulaires ou encore confort de la position). Les moyens de mettre en place pratiquement l'animation procédurale s'appellent les méthodes procédurales.
@@ -84,12 +86,12 @@ Afin de remédier à cela, nous avons utilisé la méthode introduite dans l'art
 
 
 \section{Gameplay}
-Kat'dventures est un jeu de plateforme en 3D, dont le but est d'aider un chat à atteindre une pelote de laine située au bout d'un niveau constitué d'obstacles. Face à certains obstacles, les capacités normales du chat ne seront pas efficaces. Il devra alors passer dans un mode lui offrant des super pouvoirs !
+Kat'dventures est un jeu de plateforme en 3D, dont le but est d'aider un chat à atteindre une pelote de laine située au bout d'un niveau constitué d'obstacles. Face à certains obstacles, les capacités normales du chat ne seront pas efficaces. Il devra alors passer dans un mode lui offrant des super-pouvoirs !
 \subsection{Mode ordinaire}
 Le joueur commence le jeu avec un chat normal : il marche et saute comme un chat commun. Cela pourrait suffire pour franchir le niveau, mais certains obstacles restent infranchissables malgré tout.
 
 \subsection{Mode super-pouvoirs}
-C'est alors que le mode super pouvoir devient nécessaire. Il peut être déclenché en appuyant sur un bouton du clavier. Lorsque ce mode est activé, le chat se redresse et acquiert certaines aptitudes humaines, comme celle de pousser ou encore d'escalader des parois. Ces fonctionnalités permettent de mettre en avant les possibilités offertes par la cinématique inverse.
+C'est alors que le mode super-pouvoirs devient nécessaire. Il peut être déclenché en appuyant sur un bouton du clavier. Lorsque ce mode est activé, le chat se redresse et acquiert certaines aptitudes humaines, comme celle de pousser ou encore d'escalader des parois. Ces fonctionnalités permettent de mettre en avant les possibilités offertes par la cinématique inverse.
 
 \paragraph{Pousser un cube}
 Quand il est debout, la cinématique permet au chat de poser ses pattes sur un cube. Il peut donc déplacer le cube en avançant.
@@ -110,9 +112,10 @@ Ce logiciel nous a été fortement recommandé par notre encadrant car il est fa
 \FigureEPS{h,t,b,p}{5cm}{Images/blender.eps}{Logo de Blender}{fig:blender}
 %\includegraphics[width=8.5cm]{./Images/blender.eps}
 
-Le héros du jeu, un chat, a dû être modélisé à partir d'éléments trouvés sur Internet, proposés gratuitement au téléchargement par des artistes. La mise en place du squelette du chat a demandé une étape de création supplémentaire sur le logiciel de modélisation et d'animation 3D, gratuit et open-source Blender. Un membre du groupe s'est formé parallèlement à la manipulation de ce logiciel. La création du squelette de l'animal a été une étape importante, car elle conditionne une partie non négligeable de la mise en place de l'algorithme de cinématique inverse, en particulier pour les contraintes articulaires. 
+Le héros du jeu, un chat, a dû être modélisé à partir d'éléments trouvés sur Internet, proposés gratuitement au téléchargement par des artistes. La mise en place du squelette du chat a demandé une étape de création supplémentaire sur le logiciel de modélisation et d'animation 3D, gratuit et open-source Blender. Un membre du groupe s'est formé parallèlement à la manipulation de ce logiciel. La création du squelette de l'animal a été une étape importante, car elle conditionne une partie non négligeable de la mise en place de l'algorithme de cinématique inverse, en particulier pour les contraintes articulaires. De plus, les animations de base du chat (en mode normal) ont été réalisées également sur Blender.
 
 \section{Exécution du projet}
+\subsection{Répartition des tâches}
 Sur les conseils de notre encadrant, nous nous sommes répartis les différentes tâches du projet : 
 \begin{itemize}
 \item François et Delphine se sont chargés du level-design et de l'aspect graphique ;
@@ -124,10 +127,10 @@ Cette répartition est restée globalement fixe durant tout le projet.
 Parmi les différents aspects à réaliser pour ce projet, nous avons dû implémenter le passage d'un mode à l'autre, en gérant les animations correspondantes ; nous avons également dû implémenter les butées articulaires qui ne sont pas gérées par l'algorithme CCD, ou encore intégrer la méthode TECCC. 
 
 
-\subsection{Répartition des tâches}
+
 \subsection{Méthodologie}
 \subsubsection{Encadrement}
-Notre encadrant nous a bien conseillé sur les technologies à mettre en place, ainsi que pour la création des scripts. Au début du projet les réunions ont été assez fréquentes afin d'être sûrs que nous avancions dans le bon sens. Quand le projet était bien commencé, nous avons espacé les rencontres afin d'avoir le temps de présenter des avancées intéressantes. 
+Notre encadrant nous a bien conseillé sur les technologies à mettre en place, ainsi que pour la création des scripts. Au début du projet les réunions ont été assez fréquentes afin d'être sûrs que nous avancions dans le bon sens. Certains TP nous ont été proposés pour appréhender l'interface d'Unity3D et la programmation en C\# des méthodes de cinématique inverse. Quand le projet était bien commencé, nous avons espacé les rencontres afin d'avoir le temps de présenter des avancées intéressantes. 
 
 \subsubsection{Utilisation d'outils}
 Pour faciliter la coordination de chacun et le travail collaboratif, nous avons mis en place un système de versions Git sur GitHub. Cela nous a permis d'appréhender et d'expérimenter sur le long terme cet outil. Chaque aspect du jeu avait sa branche dédiée, que nous fusionnions sur la branche \texttt{master} régulièrement. 
