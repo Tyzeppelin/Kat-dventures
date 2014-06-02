@@ -1,13 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 /// \class MurRoot
-/// A COMPLETER
+/// Script appliqué à la racine du chat : gestion des directions voulues par le joueur sur le mur.
 public class MurRoot : MonoBehaviour {
 
-	public Transform mur;
-	public int distanceMinimale;
-	public Transform[] tabDoigts;
+	public Transform mur; ///le mur d'escalade
+	public int distanceMinimale; ///la distance minimale pour que le chat s'aggripe au mur
+	public Transform[] tabDoigts; ///tableau des doigts du chat
 
 
 
@@ -51,16 +51,16 @@ public class MurRoot : MonoBehaviour {
 						activateScript (true);
 	}
 
-	/// <summary>
-	/// Activates the script for the 4 members of the cat
-	/// </summary>
-	/// <param name="b">If set to <c>true</c> b.</param>
+	/// \brief Active ou désactive le script MurDoigt pour les 4 membres du chat
+	/// \param b état d'activation des scripts MurDoigt des membres
 	private void activateScript (bool b) {
 		for (int i=0; i<tabDoigts.Length; i++) {
 			tabDoigts[i].GetComponent<MurDoigts>().enabled = b;
 		}
 	}
 
+	/// \brief Envoie la direction du mouvement voulu aux scripts MurDoigt (dans la variable directionDNT)
+	/// \param dir la direction voulue par le joueur
 	private void passageDir(Vector3 dir) {
 		for (int i=0; i<tabDoigts.Length; i++) {
 			MurDoigts compon = (MurDoigts) (tabDoigts[i].GetComponent("MurDoigts"));

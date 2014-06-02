@@ -1,18 +1,20 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 /// \class MurDoigts
-/// A COMPLETER
+/// Script s'appliquant aux doigts du chat
 public class MurDoigts : MonoBehaviour {
 
-	public Transform[] TableauDePrises;
-	public Transform DebutMembre;
-	public Transform PriseDeDebut;
-	public int epsilonDoigtPrise; //Correspond à la distance limite entre les doigts et la prise
-	public int epsilonEpaulePrise; //Correspond à la distance minimale entre l'épaule et la prise (TECCC)
-	public Vector3 directionDNT; //Direction voulue par le joueur
+	public Transform[] TableauDePrises; ///Toutes les prises du mur
+	public Transform DebutMembre; ///Racine du membre (en général épaule)
+	public Transform PriseDeDebut; ///Prise à la première frame
+	public int epsilonDoigtPrise; ///Correspond à la distance limite entre les doigts et la prise
+	public int epsilonEpaulePrise; ///Correspond à la distance minimale entre l'épaule et la prise (TECCC)
+	public Vector3 directionDNT; ///Direction voulue par le joueur
+	private CatManipulability catm; ///L'objet CatManipulability pour accéder aux méthodes de calcul
 
 	Transform priseEnCours;
+	Transform clone;
 
 
 	// Use this for initialization
@@ -20,6 +22,13 @@ public class MurDoigts : MonoBehaviour {
 		priseEnCours = PriseDeDebut;
 		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
 		test.target=PriseDeDebut;
+		//clone = (Transform)Instantiate (GetComponent<CCD3d> ().armStart);
+		/*GameObject clone = new GameObject ();
+		clone.transform.position = GetComponent<CCD3d> ().armStart.position;
+		clone.transform.rotation = GetComponent<CCD3d> ().armStart.rotation;
+		clone.AddComponent ("CCD3d");*/
+
+		catm = new CatManipulability ();
 	}
 	
 	// Update is called once per frame
@@ -35,9 +44,9 @@ public class MurDoigts : MonoBehaviour {
 	    test.target=priseEnCours;
 	}
 
-	/// \brief Method to get the best target to reach ; TECCC
+	/// \brief Méthode pour obtenir la meilleure prise ; application de l'algorithme pour TECCC
 	///
-	/// \return The prise
+	/// \return la meilleure prise selon TECCC
 	Transform getPrise() {
 		/*
 		 * Transform priseProche = priseEnCours; // TODO a revoir 
@@ -61,24 +70,41 @@ public class MurDoigts : MonoBehaviour {
 			}
 		}
 
-		// 2: 
+		// 2: Set up
 		Transform priseProche = null;
 		float bestFTR = -1000000000000;
+
 
 		//3: 
 		foreach (Transform p in TabPrisesProches) 
 		{
 			//3a : trouver une bonne config avec IK
+				//TODO revoir l'ensemble de 3a
+				//Avec le clone, les scripts sont aussi copiés : on ne garde que celui de CCD, que l'on paramètre bien
+			Transform clone=Instantiate(GetComponent<CCD3d>().armStart) as Transform;
+			Transform doigt = clone; //Desactiver les scripts sur les clones ! 
+			while (doigt.childCount != 0) doigt=doigt.GetChild(0);
+			Debug.Log(doigt);
+			doigt.GetComponent<CCD3d>().target=p;
+			doigt.GetComponent<CCD3d>().enabled=true;
+				//On fait tourner l'algo de CCD
+			int i = 0;
+			/*while ((Vector3.Distance(doigt.position,p.position) > epsilonDoigtPrise) && i<10) {
+				Debug.Log("CCD3dStep");
+				GetComponent<CCD3d>().CCDStep3D(doigt,doigt,p);
+				i++;
+			}*/
 
-			//3b : 
-			CatManipulability script = (CatManipulability) transform.GetComponent("CatManipulability");
-			float currentFTR=script.ftr(directionDNT); 
+			//3b : calcul du FTR
+			float currentFTR = catm.ftr(directionDNT,doigt); //TODO verif si c'est le bon transform 
 			if (currentFTR > bestFTR) 
 			{
 				bestFTR=currentFTR;
 				priseProche=p;
 			}
+			Destroy(clone,0.001f);
 		}
 		return priseProche;
 	}
 }
+
