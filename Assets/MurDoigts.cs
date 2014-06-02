@@ -12,7 +12,7 @@ public class MurDoigts : MonoBehaviour {
 	private CatManipulability catm;
 
 	Transform priseEnCours;
-	GameObject clone;
+	Transform clone;
 
 
 	// Use this for initialization
@@ -21,10 +21,10 @@ public class MurDoigts : MonoBehaviour {
 		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
 		test.target=PriseDeDebut;
 		//clone = (Transform)Instantiate (GetComponent<CCD3d> ().armStart);
-		GameObject clone = new GameObject ();
+		/*GameObject clone = new GameObject ();
 		clone.transform.position = GetComponent<CCD3d> ().armStart.position;
 		clone.transform.rotation = GetComponent<CCD3d> ().armStart.rotation;
-		clone.AddComponent ("CCD3d");
+		clone.AddComponent ("CCD3d");*/
 
 		catm = new CatManipulability ();
 	}
@@ -77,19 +77,21 @@ public class MurDoigts : MonoBehaviour {
 		foreach (Transform p in TabPrisesProches) 
 		{
 			//3a : trouver une bonne config avec IK
+
 				//Avec le clone, les scripts sont aussi copiés : on ne garde que celui de CCD, que l'on paramètre bien
-			Transform doigt = clone.transform; //Desactiver les scripts sur les clones ! 
+			Transform clone=Instantiate(GetComponent<CCD3d>().armStart) as Transform;
+			Transform doigt = clone; //Desactiver les scripts sur les clones ! 
 			while (doigt.childCount != 0) doigt=doigt.GetChild(0);
 			Debug.Log(doigt);
 			doigt.GetComponent<CCD3d>().target=p;
 			doigt.GetComponent<CCD3d>().enabled=true;
 				//On fait tourner l'algo de CCD
 			int i = 0;
-			while ((Vector3.Distance(doigt.position,p.position) > epsilonDoigtPrise) && i<10) {
+			/*while ((Vector3.Distance(doigt.position,p.position) > epsilonDoigtPrise) && i<10) {
 				Debug.Log("CCD3dStep");
 				GetComponent<CCD3d>().CCDStep3D(doigt,doigt,p);
 				i++;
-			}
+			}*/
 
 			//3b : calcul du FTR
 			float currentFTR = catm.ftr(directionDNT,doigt); //TODO verif si c'est le bon transform 
@@ -98,6 +100,7 @@ public class MurDoigts : MonoBehaviour {
 				bestFTR=currentFTR;
 				priseProche=p;
 			}
+			Destroy(clone,0.001f);
 		}
 		return priseProche;
 	}
