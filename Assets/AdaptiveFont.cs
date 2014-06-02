@@ -1,23 +1,17 @@
 /// \class AdaptiveFont
-/// Script pour modifier dynamiquement la taille de la police du bonton
-/// Ce script sert aussi à cherger les scènes lorsque le bouton est pressé.
-
-public class CCD3d : MonoBehaviour {
+/// Script pour modifier dynamiquement la taille de la police du bouton.
+/// Ce script sert aussi à charger les scènes lorsque le bouton est pressé.
+public class AdaptiveFont : MonoBehaviour {
 	#region script_parameters	
-	
-	/// La taille de la police au repos
+	/// la taille de la police au repos
 	private int s_size_idle;
-	
-	/// La taille de la police lorsque le bouton est survolé par la souris
+	/// la taille de la police lorsque le bouton est survolé par la souris
 	private int s_size_active;
-
-  /// L'identificateur du niveau a charger au clic
+	/// l'identificateur du niveau a charger au clic
 	public string levelName;
-
-  /// La largeur actuelle de la fenêtre
+	/// la largeur actuelle de la fenêtre
 	private int screenRes;
 	#endregion script_parameters
-
 	// Use this for initialization
 	void Start () {
 	screenRes = Screen.width;
@@ -30,15 +24,15 @@ public class CCD3d : MonoBehaviour {
 	void Update () {
 	}
 
-	/// \brief Lorsque la souris arrive au dessus du bouton, 
-  /// la police passe a la taille s_size_active
+	/// \brief Lorsque la souris arrive au-dessus du bouton, 
+	/// la police passe à la taille s_size_active
 	void OnMouseEnter() {
 		this.guiText.fontSize = s_size_active;
 	}
 
-  /// \brief Lorsque la souris quitte le bouton, 
-  /// la police passe a la taille s_size_idle
-	void OnMouseExit() {
+	/// \brief Lorsque la souris quitte le bouton, 
+	/// la police passe à la taille s_size_idle
+	public void OnMouseExit() {
 		this.guiText.fontSize = s_size_idle;
 	}
 

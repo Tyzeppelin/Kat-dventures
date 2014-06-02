@@ -1,0 +1,44 @@
+\hypertarget{class_adaptive_font}{\section{Référence de la classe Adaptive\+Font}
+\label{class_adaptive_font}\index{Adaptive\+Font@{Adaptive\+Font}}
+}
+
+
+Est dérivée de Mono\+Behaviour.
+
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_adaptive_font_a84fcf4d49a4254c0ba4d27bbd8f24a6b}{void \hyperlink{class_adaptive_font_a84fcf4d49a4254c0ba4d27bbd8f24a6b}{On\+Mouse\+Exit} ()}\label{class_adaptive_font_a84fcf4d49a4254c0ba4d27bbd8f24a6b}
+
+\begin{DoxyCompactList}\small\item\em Lorsque la souris quitte le bouton, la police passe à la taille s\+\_\+size\+\_\+idle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_adaptive_font_ad6983c8a4fbb77aa7ca336ced0da2d33}{string \hyperlink{class_adaptive_font_ad6983c8a4fbb77aa7ca336ced0da2d33}{level\+Name}}\label{class_adaptive_font_ad6983c8a4fbb77aa7ca336ced0da2d33}
+
+\begin{DoxyCompactList}\small\item\em l'identificateur du niveau a charger au clic \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_adaptive_font_abd63837566c38d9a045957e794a2316c}{void \hyperlink{class_adaptive_font_abd63837566c38d9a045957e794a2316c}{On\+Mouse\+Enter} ()}\label{class_adaptive_font_abd63837566c38d9a045957e794a2316c}
+
+\begin{DoxyCompactList}\small\item\em Lorsque la souris arrive au-\/dessus du bouton, la police passe à la taille s\+\_\+size\+\_\+active. \end{DoxyCompactList}\item 
+\hypertarget{class_adaptive_font_a68b43aa442ad16678b8b12b8b1844b35}{void \hyperlink{class_adaptive_font_a68b43aa442ad16678b8b12b8b1844b35}{On\+Mouse\+Up} ()}\label{class_adaptive_font_a68b43aa442ad16678b8b12b8b1844b35}
+
+\begin{DoxyCompactList}\small\item\em Lorsque l'utilisateur relache le clic, on charge le niveau \char`\"{}level\+Name\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_adaptive_font_a91f43ecc9ea5d9a007b0fcc6362f72e5}{int \hyperlink{class_adaptive_font_a91f43ecc9ea5d9a007b0fcc6362f72e5}{s\+\_\+size\+\_\+idle}}\label{class_adaptive_font_a91f43ecc9ea5d9a007b0fcc6362f72e5}
+
+\begin{DoxyCompactList}\small\item\em la taille de la police au repos \end{DoxyCompactList}\item 
+\hypertarget{class_adaptive_font_a444603ec6b952627fef7ab28ec2f5990}{int \hyperlink{class_adaptive_font_a444603ec6b952627fef7ab28ec2f5990}{s\+\_\+size\+\_\+active}}\label{class_adaptive_font_a444603ec6b952627fef7ab28ec2f5990}
+
+\begin{DoxyCompactList}\small\item\em la taille de la police lorsque le bouton est survolé par la souris \end{DoxyCompactList}\item 
+\hypertarget{class_adaptive_font_aa6ffb114d920e9cb8b3b5da59ec067d2}{int \hyperlink{class_adaptive_font_aa6ffb114d920e9cb8b3b5da59ec067d2}{screen\+Res}}\label{class_adaptive_font_aa6ffb114d920e9cb8b3b5da59ec067d2}
+
+\begin{DoxyCompactList}\small\item\em la largeur actuelle de la fenêtre \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Script pour modifier dynamiquement la taille de la police du bouton. Ce script sert aussi à charger les scènes lorsque le bouton est pressé. 
