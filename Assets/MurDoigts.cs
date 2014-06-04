@@ -14,7 +14,6 @@ public class MurDoigts : MonoBehaviour {
 	private CatManipulability catm; ///L'objet CatManipulability pour accéder aux méthodes de calcul
 
 	Transform priseEnCours;
-	Transform clone;
 
 
 	// Use this for initialization
@@ -22,11 +21,6 @@ public class MurDoigts : MonoBehaviour {
 		priseEnCours = PriseDeDebut;
 		CCD3d test = (CCD3d)(transform.GetComponent ("CCD3d"));
 		test.target=PriseDeDebut;
-		//clone = (Transform)Instantiate (GetComponent<CCD3d> ().armStart);
-		/*GameObject clone = new GameObject ();
-		clone.transform.position = GetComponent<CCD3d> ().armStart.position;
-		clone.transform.rotation = GetComponent<CCD3d> ().armStart.rotation;
-		clone.AddComponent ("CCD3d");*/
 
 		catm = new CatManipulability ();
 	}
@@ -36,6 +30,7 @@ public class MurDoigts : MonoBehaviour {
 
 		//Vérification de la distance : quand la main est trop loin de la prise, on change
 		if (Vector3.Distance (transform.position, priseEnCours.position) > epsilonDoigtPrise) {
+			Debug.Log ("Changement de prise en cours");
 			priseEnCours=getPrise ();
 		}
 
@@ -64,6 +59,7 @@ public class MurDoigts : MonoBehaviour {
 		foreach (Transform t in TableauDePrises) 
 		{
 			if (Vector3.Distance(t.position,DebutMembre.position) < epsilonEpaulePrise) {
+				Debug.Log("Création du tab de prises");
 				//La prise est à retenir
 				TabPrisesProches[iTabP]=t;
 				iTabP++;
@@ -79,30 +75,41 @@ public class MurDoigts : MonoBehaviour {
 		foreach (Transform p in TabPrisesProches) 
 		{
 			//3a : trouver une bonne config avec IK
-				//TODO revoir l'ensemble de 3a
-				//Avec le clone, les scripts sont aussi copiés : on ne garde que celui de CCD, que l'on paramètre bien
-			Transform clone=Instantiate(GetComponent<CCD3d>().armStart) as Transform;
-			Transform doigt = clone; //Desactiver les scripts sur les clones ! 
-			while (doigt.childCount != 0) doigt=doigt.GetChild(0);
-			Debug.Log(doigt);
-			doigt.GetComponent<CCD3d>().target=p;
-			doigt.GetComponent<CCD3d>().enabled=true;
+			//ALORS : Attention le code qui va suivre est vraiment pas tip top. C'est sale, mais ça devrait marcher ; de toute façon, on n'a plus le temps de faire dans la dentelle.
+			// Pour chaque membre, on a dit qu'il avait des parents sur 3 générations au-dessus. On va rentrer les clones à la main.
+			CCD3d ccdScript = GetComponent<CCD3d>();
+			Clone doigt = new Clone(transform,ccdScript.tabMembre[0]);
+			Clone bas = new Clone(transform.parent,ccdScript.tabMembre[1]);
+			Clone haut = new Clone(transform.parent.parent,ccdScript.tabMembre[2]);
+			Clone epaule = new Clone(transform.parent.parent.parent,ccdScript.tabMembre[3]);
+			//Je vous l'avais dis...
+			//Réglage de l'hérédité : 
+			doigt.trans.parent = bas.trans;
+			bas.trans.parent = haut.trans;
+			haut.trans.parent = epaule.trans;
+			epaule.trans.parent = null;
+			Debug.Log("-----------" + doigt.trans);
+
+
 				//On fait tourner l'algo de CCD
-			int i = 0;
-			/*while ((Vector3.Distance(doigt.position,p.position) > epsilonDoigtPrise) && i<10) {
-				Debug.Log("CCD3dStep");
-				GetComponent<CCD3d>().CCDStep3D(doigt,doigt,p);
-				i++;
-			}*/
+			//int i = 0;
+			//while ((Vector3.Distance(doigt.trans.position,p.position) > epsilonDoigtPrise) && i<10) {
+				doigt.CCDStep3D(doigt.trans, doigt.trans,p);
+				doigt.CCDStep3D(bas.trans, doigt.trans,p);
+				doigt.CCDStep3D(haut.trans, doigt.trans,p);
+				doigt.CCDStep3D(epaule.trans, doigt.trans,p);
+				//i++;
+				//if (i==9) Debug.Log("I");
+			//}
 
 			//3b : calcul du FTR
-			float currentFTR = catm.ftr(directionDNT,doigt); //TODO verif si c'est le bon transform 
+			float currentFTR = catm.ftr(directionDNT,doigt.trans); //TODO verif si c'est le bon transform 
+			Debug.Log("FTR = " + currentFTR);
 			if (currentFTR > bestFTR) 
 			{
 				bestFTR=currentFTR;
 				priseProche=p;
 			}
-			Destroy(clone,0.001f);
 		}
 		return priseProche;
 	}

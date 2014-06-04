@@ -17,14 +17,6 @@ public class CCD3d : MonoBehaviour {
 	public Transform target;
 	public Transform armStart;
 	public Transform displayEuler;
-	/*public Transform membre1;
-	public Vector3 angles1;
-	public Transform membre2;
-	public Vector3 angles2;
-	public Transform membre3;
-	public Vector3 angles3;
-	public Transform membre4;
-	public Vector3 angles4;*/
 	public InfoMembre[] tabMembre;
 	#endregion script_parameters
 		
@@ -76,6 +68,8 @@ public class CCD3d : MonoBehaviour {
 		
 		//Verification des angles d'euler pour chaque membre
 		verifAngles(joint);
+
+		Debug.Log ("CCD classique");
 
 		/*print(joint.name+" : "+joint.localEulerAngles);
 		for (int i = 0; i<tabMembre.Length; i++) {
