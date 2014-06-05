@@ -9,6 +9,10 @@ public class BoxMove : MonoBehaviour {
 	public Transform patteGauche;
 	/// patte droite du chat
 	public Transform patteDroite;
+
+	public Transform ciblegauche;
+	public Transform cibledroit;
+
 	/// epsilon 
 	public float e;
 	// Use this for initialization
@@ -18,8 +22,8 @@ public class BoxMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 v = patteDroite.position - gameObject.transform.position;
-		Vector3 v2 = patteGauche.position - gameObject.transform.position;
+		Vector3 v = patteDroite.position - cibledroit.transform.position;
+		Vector3 v2 = patteGauche.position - ciblegauche.transform.position;
 		Debug.Log (v.magnitude+"");
 		if (v.magnitude < e || v2.magnitude < e) 
 		{
