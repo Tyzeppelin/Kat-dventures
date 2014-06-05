@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 /// \class MurDoigts
@@ -30,7 +31,7 @@ public class MurDoigts : MonoBehaviour {
 
 		//Vérification de la distance : quand la main est trop loin de la prise, on change
 		if (Vector3.Distance (transform.position, priseEnCours.position) > epsilonDoigtPrise) {
-			Debug.Log ("Changement de prise en cours");
+			//Debug.Log ("Changement de prise en cours");
 			priseEnCours=getPrise ();
 		}
 
@@ -55,16 +56,18 @@ public class MurDoigts : MonoBehaviour {
 
 		// 1: choix des prises proches
 		int iTabP = 0;
-		Transform[] TabPrisesProches=new Transform[5]; //Mis à 10 par défaut
+		//Transform[] TabPrisesProches=new Transform[5]; //Mis à 10 par défaut
+		ArrayList TabPrisesProches = new ArrayList (0);
 		foreach (Transform t in TableauDePrises) 
 		{
 			if (Vector3.Distance(t.position,DebutMembre.position) < epsilonEpaulePrise) {
-				Debug.Log("Création du tab de prises");
+				//Debug.Log("Création du tab de prises");
 				//La prise est à retenir
-				TabPrisesProches[iTabP]=t;
+				TabPrisesProches.Add (t);
 				iTabP++;
 			}
 		}
+
 
 		// 2: Set up
 		Transform priseProche = null;
@@ -74,6 +77,7 @@ public class MurDoigts : MonoBehaviour {
 		//3: 
 		foreach (Transform p in TabPrisesProches) 
 		{
+			Debug.Log("Prise p : "+p);
 			//3a : trouver une bonne config avec IK
 			//ALORS : Attention le code qui va suivre est vraiment pas tip top. C'est sale, mais ça devrait marcher ; de toute façon, on n'a plus le temps de faire dans la dentelle.
 			// Pour chaque membre, on a dit qu'il avait des parents sur 3 générations au-dessus. On va rentrer les clones à la main.
@@ -87,20 +91,16 @@ public class MurDoigts : MonoBehaviour {
 			doigt.trans.parent = bas.trans;
 			bas.trans.parent = haut.trans;
 			haut.trans.parent = epaule.trans;
-			epaule.trans.parent = null;
-			Debug.Log("-----------" + doigt.trans);
+			epaule.trans.parent = DebutMembre.transform.parent;
+			//Debug.Log(DebutMembre.transform.parent);
+			//Debug.Log("-----------" + doigt.trans);
 
 
 				//On fait tourner l'algo de CCD
-			//int i = 0;
-			//while ((Vector3.Distance(doigt.trans.position,p.position) > epsilonDoigtPrise) && i<10) {
 				doigt.CCDStep3D(doigt.trans, doigt.trans,p);
-				doigt.CCDStep3D(bas.trans, doigt.trans,p);
-				doigt.CCDStep3D(haut.trans, doigt.trans,p);
-				doigt.CCDStep3D(epaule.trans, doigt.trans,p);
-				//i++;
-				//if (i==9) Debug.Log("I");
-			//}
+				bas.CCDStep3D(bas.trans, doigt.trans,p);
+				haut.CCDStep3D(haut.trans, doigt.trans,p);
+				epaule.CCDStep3D(epaule.trans, doigt.trans,p);
 
 			//3b : calcul du FTR
 			float currentFTR = catm.ftr(directionDNT,doigt.trans); //TODO verif si c'est le bon transform 

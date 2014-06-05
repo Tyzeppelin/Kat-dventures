@@ -69,7 +69,7 @@ public class CCD3d : MonoBehaviour {
 		//Verification des angles d'euler pour chaque membre
 		verifAngles(joint);
 
-		Debug.Log ("CCD classique");
+		//Debug.Log ("CCD classique");
 
 		/*print(joint.name+" : "+joint.localEulerAngles);
 		for (int i = 0; i<tabMembre.Length; i++) {

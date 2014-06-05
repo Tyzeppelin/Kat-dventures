@@ -27,7 +27,7 @@ public class MurRoot : MonoBehaviour {
 		//Vector3 val;
 		if (Input.GetKey (KeyCode.UpArrow)) {
 			//val = mur.up; val.Scale(0.1);
-						move = move + (0.1f * mur.up);
+			move = move + (0.1f * mur.up);
 						passageDir (mur.up);
 				}
 		if (Input.GetKey (KeyCode.DownArrow)) {

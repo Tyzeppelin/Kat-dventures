@@ -25,7 +25,7 @@ public class Clone{
 
 		//Verification des angles d'euler pour chaque membre
 		//verifAngles(joint);
-		Debug.Log ("CCD clone");
+		//Debug.Log ("CCD clone");
 
 	}
 
