@@ -77,7 +77,7 @@ public class NormalCharacterMotor : CharacterMotor {
 		CollisionFlags flags = controller.Move(movement * Time.deltaTime);
 		grounded = (flags & CollisionFlags.CollidedBelow) != 0;
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
 		UpdateFacingDirection();

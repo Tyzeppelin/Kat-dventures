@@ -1,3 +1,4 @@
+using UnityEngine;
 /// \class AdaptiveFont
 /// Script pour modifier dynamiquement la taille de la police du bouton.
 /// Ce script sert aussi à charger les scènes lorsque le bouton est pressé.
@@ -17,7 +18,7 @@ public class AdaptiveFont : MonoBehaviour {
 	screenRes = Screen.width;
 		s_size_idle = (int)(screenRes/13.6);
 		s_size_active = s_size_idle+10;
-		this.guiText.fontSize = s_size_idle
+		this.guiText.fontSize = s_size_idle;
 	}
 
 	// Update is called once per frame

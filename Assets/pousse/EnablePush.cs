@@ -34,7 +34,7 @@ public class EnablePush : MonoBehaviour {
 			}
 		}
 		else if(Input.GetKeyDown(KeyCode.UpArrow) && isPushing) {
-			gameObject.animation.Play("marcherDebout");
+			//gameObject.animation.Play("marcherDebout");
 		}
 		else if(Input.GetKeyUp(KeyCode.UpArrow) && isPushing) {
 			gameObject.animation.Stop();
