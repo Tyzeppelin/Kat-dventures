@@ -1,0 +1,126 @@
+fileFormatVersion: 2
+guid: f039747613dbda84292ffa72e559e454
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BassinDroit
+    100004: BassinGauche
+    100006: BassinHaut
+    100008: Camera
+    100010: cat
+    100012: Cou
+    100014: Lamp
+    100016: //RootNode
+    100018: PatteArri_reDroiteBas
+    100020: PatteArri_reDroiteDoigts
+    100022: PatteArri_reDroiteHaut
+    100024: PatteArri_reGaucheBas
+    100026: PatteArri_reGaucheDoigts
+    100028: PatteArri_reGaucheHaut
+    100030: PatteAvantDroiteBas
+    100032: PatteAvantDroiteDoigts
+    100034: PatteAvantDroiteEpaule
+    100036: PatteAvantDroiteHaut
+    100038: PatteAvantGaucheBas
+    100040: PatteAvantGaucheDoigts
+    100042: PatteAvantGaucheEpaule
+    100044: PatteAvantGaucheHaut
+    100046: QueueBase
+    100048: QueueBout
+    100050: QueueMilieu
+    100052: T_te
+    100054: Torse
+    100056: Ventre
+    400000: Armature
+    400002: BassinDroit
+    400004: BassinGauche
+    400006: BassinHaut
+    400008: Camera
+    400010: cat
+    400012: Cou
+    400014: Lamp
+    400016: //RootNode
+    400018: PatteArri_reDroiteBas
+    400020: PatteArri_reDroiteDoigts
+    400022: PatteArri_reDroiteHaut
+    400024: PatteArri_reGaucheBas
+    400026: PatteArri_reGaucheDoigts
+    400028: PatteArri_reGaucheHaut
+    400030: PatteAvantDroiteBas
+    400032: PatteAvantDroiteDoigts
+    400034: PatteAvantDroiteEpaule
+    400036: PatteAvantDroiteHaut
+    400038: PatteAvantGaucheBas
+    400040: PatteAvantGaucheDoigts
+    400042: PatteAvantGaucheEpaule
+    400044: PatteAvantGaucheHaut
+    400046: QueueBase
+    400048: QueueBout
+    400050: QueueMilieu
+    400052: T_te
+    400054: Torse
+    400056: Ventre
+    4300000: cat
+    7400000: Default Take
+    7400002: ArmatureAction
+    7400004: Lever
+    7400006: marcherDebout
+    7400008: repos
+    7400010: saut
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: cat
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 

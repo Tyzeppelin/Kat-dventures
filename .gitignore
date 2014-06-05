@@ -7,7 +7,6 @@ Build/*
 *.csproj
 *.pidb
 *.unityproj
-*.meta
 .DS_Store
 /Library/FailedAssetImports.txt
 /Library/cache/
@@ -27,8 +26,3 @@ Build/*
 # http://stackoverflow.com/questions/1...ops-pidb-files
 *.pidb
 *.userprefs
-<<<<<<< HEAD
-*.meta
-=======
-*.meta
->>>>>>> pousseCaisse
