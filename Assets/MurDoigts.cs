@@ -9,8 +9,8 @@ public class MurDoigts : MonoBehaviour {
 	public Transform[] TableauDePrises; ///Toutes les prises du mur
 	public Transform DebutMembre; ///Racine du membre (en général épaule)
 	public Transform PriseDeDebut; ///Prise à la première frame
-	public int epsilonDoigtPrise; ///Correspond à la distance limite entre les doigts et la prise
-	public int epsilonEpaulePrise; ///Correspond à la distance minimale entre l'épaule et la prise (TECCC)
+	public float epsilonDoigtPrise; ///Correspond à la distance limite entre les doigts et la prise
+	public float epsilonEpaulePrise; ///Correspond à la distance minimale entre l'épaule et la prise (TECCC)
 	public Vector3 directionDNT; ///Direction voulue par le joueur
 	private CatManipulability catm; ///L'objet CatManipulability pour accéder aux méthodes de calcul
 
